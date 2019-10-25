@@ -15,10 +15,10 @@
       <li nz-submenu nzOpen nzTitle="Home Page" nzIcon="dashboard">
         <ul>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="/welcome">Welcome</a>
+            <a routerLink="emas/welcome/home">Welcome</a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a>Monitor</a>
+            <a routerLink="/welcome/monitor">monitor</a>
           </li>
           <li nz-menu-item nzMatchRouter>
             <a>Workplace</a>
@@ -32,6 +32,9 @@
           </li>
         </ul>
       </li>
+      <li nz-submenu nzOpen nzTitle="User Management" nzIcon="user">
+         
+      </li>
     </ul>
   </nz-sider>
   <nz-layout>
@@ -43,6 +46,11 @@
                [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
             ></i>
         </span>
+        <div style="display: inline-block;float: right;">
+                <button nz-button nzType="link">login</button>
+                <nz-divider nzType="vertical"></nz-divider>
+                <button nz-button nzType="link">register</button> 
+        </div>     
       </div>
     </nz-header>
     <nz-content>

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AppServe } from '../App.serve';
 
 @Component({
   selector: 'app-welcome',
@@ -8,22 +7,13 @@ import { AppServe } from '../App.serve';
 })
 export class WelcomeComponent implements OnInit {
 
-  listOfData = [];
+  listOfData = ['1', '2', 'peter'];
 
   constructor(
-    private appServe: AppServe
   ) { }
 
   ngOnInit() {
-    this.getAllData();
-  }
-
-  getAllData() {
-    this.appServe.getData().subscribe((r) => {
-      console.log(r);
-      const res: any = r;
-      this.listOfData = res.message;
-    });
+    // this.getAllData();
   }
 
 }

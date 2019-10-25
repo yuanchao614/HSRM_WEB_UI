@@ -6,11 +6,11 @@ const urlMap = {
 };
 
 
-export function wsSend(service: string, param?) {
+export function wsSend(service: string) {
     const subject = new Subject();
     const client2 = new XMLHttpRequest();
     if (urlMap[service].dataType) {
-        client2.open('GET', '/api' + urlMap[service].url + param, true);
+        client2.open('GET', '/api' + urlMap[service].url, true);
     } else {
         client2.open('POST', '/api' + urlMap[service].url, true);
     }
