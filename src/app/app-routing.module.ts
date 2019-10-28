@@ -9,11 +9,11 @@ const routes: Routes = [
     path: 'emas',
     component: LayoutsComponent,
     children: [
-      { path: 'welcome', loadChildren: './pages/welcome/welcome.module#WelcomeModule' },
+      { path: 'welcome', loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomeModule)},
     ]
   },
-  // { path: 'welcome', loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomeModule) },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: '**', redirectTo: 'emas', pathMatch: 'full' }
 ];
 
 @NgModule({

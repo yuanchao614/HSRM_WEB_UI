@@ -1,160 +1,19 @@
-.login-header {
-    width: 100%;
-    height: 0.8rem;
-}
-.login-main {
-    width: 100%;
-    height: calc(100vh - 1.8rem);
-}
-.login-content {
-    width: 900px;
-    height: 600px;
-    padding: 26px 50px 50px 50px;
-}
-.login-footer {
-    width: 100%;
-    height: 1rem;
-}
-.auth-module {
-    width: 100%;
-    min-width: 1024px;
-    min-height: 100%;
-    background: url(/content/images/background.png) center center no-repeat #f5f5f5;
-}
+.login-form {
+    max-width: 300px;
+  }
 
-.time-box {
-    font-size: 0.16rem;
-    color: #1d1d1d;
-    margin-right: 0.3rem;
-    width: 3rem;
-    max-width: 3rem;
-    font-weight: 400;
-    /* font-family: SegoeUI; */
-}
+  .login-form-forgot {
+    float: right;
+  }
 
-.lang-label {
-    width: 1rem;
-    height: 0.3rem;
-    background: #265db8;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 0.14rem;
-    font-weight: bold;
-    border: 0;
-    padding: 0 0.15rem;
-}
+  .login-form-button {
+    width: 100%;
+  }
 
-.login-right-part {
-    height: 100%;
-    width: 300px;
+  .content {
+    display: flex;
     align-items: center;
-}
-
-.login-logo {
-    width: 275px;
-    height: 353px;
-    background: rgba(255, 255, 255, 1);
-    border: 1px solid rgba(54, 65, 80, 1);
-    border-radius: 20px;
-}
-
-.login-project-name {
-    margin-top: 50px;
-}
-
-.login-project-name > p:first-child {
-    width: 150px;
-    height: 32px;
-    font-size: 40px;
-    font-family: Adobe Heiti Std R;
-    font-weight: normal;
-    color: rgba(51, 51, 51, 1);
-    line-height: 20px;
-}
-
-.login-project-name > p:last-child {
-    height: 16px;
-    font-size: 20px;
-    font-family: Adobe Heiti Std R;
-    font-weight: normal;
-    color: rgba(153, 153, 153, 1);
-    line-height: 20px;
-    margin-top: 10px;
-    text-align: center;
-}
-.login-font-family {
-    font-family: Adobe Heiti Std R;
-}
-.login-left-part {
-    width: 368px;
-    padding-top: 154px;
-    margin-left: 70px;
+    justify-content: center;
     height: 100%;
-}
-.login-left-part > .login-title {
-    font-size: 20px;
-    color: #333333;
-    text-align: center;
-    padding-bottom: 53px;
-}
-.login-remember-line {
-    font-size: 12px;
-    color: #999999;
-}
-.login-form input,
-.login-form button {
-    height: 40px;
-}
-.login-form nz-form-item:first-child {
-    margin-bottom: 24px;
-}
-.login-form nz-form-item:nth-child(2),
-.login-form nz-form-item:nth-child(3) {
-    margin-bottom: 0;
-}
-.login-form nz-form-item:nth-child(3) ::ng-deep .ant-form-item-control {
-    padding-top: 10px;
-    line-height: initial;
-}
-.login-form nz-form-item:nth-child(4) {
-    margin-top: 46px;
-}
-
-.login-form-button {
-    width: 100%;
-    color: #fff;
-    background-color: #5a74b7;
-    border-color: #5a74b7;
-}
-.login-form-checkBos-line div {
-    width: 368px;
-}
-.info-text {
-    color: red;
-    padding-top: 5px;
-}
-
-.ng-invalid:not(form) {
-    border-left: 1px solid #d9d9d9;
-}
-:host ::ng-deep .ant-checkbox-inner {
-    width: 13px;
-    height: 13px;
-}
-:host ::ng-deep .ant-checkbox-inner,
-:host ::ng-deep .ant-checkbox-input:focus + .ant-checkbox-inner {
-    border-color: #5a74b7 !important;
-}
-:host ::ng-deep .ant-checkbox-checked .ant-checkbox-inner {
-    background-color: #5a74b7 !important;
-    border-color: #5a74b7 !important;
-}
-
-.login-attribution {
-    text-align: center;
-    color: #fff;
-}
-.logoImg {
-    width: 100%;
-    height: 100%;
-}
+    background: url(http://img4.imgtn.bdimg.com/it/u=2597722055,3918847689&fm=26&gp=0.jpg)
+  }
