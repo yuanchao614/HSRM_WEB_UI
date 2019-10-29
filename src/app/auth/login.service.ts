@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { wsSend } from '../public/until/webServe';
+import { from } from 'rxjs';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class LoginService {
 	constructor(
-		private router: Router,
-    ) {}
-    
+		private router: Router
+	) { }
+
 
     /**
      * check token
@@ -28,9 +30,16 @@ export class LoginService {
 	getAccessToken() {
 		this.autoAccessToken();
 		return localStorage.getItem('access_token');
-    }
-    
-    logInCheck() {
+	}
+
+	logInCheck() {
 		this.router.navigate(['/login']);
-    }
+	}
+
+	logIn(data) {
+		return wsSend('login', data);
+	}
+	
+
+
 }
