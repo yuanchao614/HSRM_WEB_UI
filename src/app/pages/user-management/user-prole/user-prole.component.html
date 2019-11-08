@@ -1,0 +1,45 @@
+<div>
+  <div class="pageHeader">
+    <div class="head-box">
+        <button nz-button nzType="primary" nzShape="circle" (click)="refresh()"><i nz-icon [nzType]="'sync'" [nzSpin]="false"></i></button>
+    </div>
+  </div>
+  <nz-table #basicTable nzBordered [nzData]="listOfData">
+    <thead>
+      <tr>
+        <th *ngFor="let item of renderHeader; let i = index">
+          {{item.name}}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data; let i = index" (click)="clickTr(data)" (dblclick)="updateShowModal(data)" [ngClass]="{'active': clickTrData.username == data.username}">
+        <td>{{ data.id }}</td>
+        <td>{{ data.role_id }}</td>
+        <td>{{ data.username }}</td>
+        <td>{{ data.realname }}</td>
+        <td>{{ data.password }}</td>
+        <td>{{ data.createTime }}</td>
+        <td>{{ data.updateTime }}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+  <div nz-row>
+      <div nz-col nzSpan="4">
+            <button nz-button nzType="primary" style="width: 100px;" (click)="showModalMiddle()">Add User</button>
+      </div>
+      <div nz-col nzSpan="4">
+            <button nz-button nzType="danger" style="width: 100px;" (click)="deleteShowModal()">Delete User</button>
+      </div>
+  </div>
+</div>
+
+<ng-container>
+		<app-add-user *ngIf="isVisibleMiddle" [isVisibleMiddle]="isVisibleMiddle" (closeModal)="closeModal()"></app-add-user>
+</ng-container>
+<ng-container>
+  <app-delete-user *ngIf="deleteIsVisible" [deleteIsVisible]="deleteIsVisible" [clickTrData]="clickTrData" (deleteCloseModal)="deleteCloseModal()"></app-delete-user>
+</ng-container>
+<ng-container>
+		<app-update-password *ngIf="updateIsVisble" [updateIsVisble]="updateIsVisble" [updateTrData]="updateTrData" (closeModal)="updateCloseModal()"></app-update-password>
+</ng-container>

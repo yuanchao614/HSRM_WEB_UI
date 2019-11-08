@@ -32,8 +32,12 @@
                 </li>
               </ul>
             </li>
-            <li nz-submenu nzOpen nzTitle="User Management" nzIcon="">
-               
+            <li nz-submenu nzOpen nzTitle="User Management" nzIcon="user">
+                <ul>
+                    <li nz-menu-item nzMatchRouter>
+                        <a routerLink="/emas/user-management/user-prole">user-prole</a>
+                    </li>
+                  </ul>
             </li>
           </ul>
         </nz-sider>
@@ -46,10 +50,9 @@
                      [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
                   ></i>
               </span>
-              <div style="display: inline-block;float: right;">
-                      <button nz-button nzType="link">login</button>
-                      <nz-divider nzType="vertical"></nz-divider>
-                      <button nz-button nzType="link">register</button> 
+              <div style="float: right;">
+                <span>{{systemService.time.date}} {{systemService.time.time}}</span>
+                <button nz-button nzType="link" (click)="logOut()" style="margin-right: 9px;"><i nz-icon nzType="logout" nzTheme="outline"></i>login out</button> 
               </div>     
             </div>
           </nz-header>

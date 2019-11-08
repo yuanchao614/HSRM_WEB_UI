@@ -1,0 +1,15 @@
+.pageHeader {
+    /* background: lightgray; */
+    height: 100px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.head-box {
+    width: 100px;
+}
+
+.active {
+    background: #e6f7ff;
+}

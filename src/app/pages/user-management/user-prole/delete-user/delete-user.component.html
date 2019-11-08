@@ -1,0 +1,24 @@
+<nz-modal nzWrapClassName="vertical-center-modal" nzWidth=600 nzMaskClosable="false" [nzTitle]="modalTitle"
+  [nzFooter]="modalFooter" [nzContent]="modalContent" [(nzVisible)]="deleteIsVisible" [nzFooter]="null"
+  (nzOnCancel)="handleCancelMiddle()">
+  <ng-template #modalTitle>
+    Delete User
+  </ng-template>
+  <ng-template #modalContent>
+    <nz-descriptions nzTitle="User Infomation" nzLayout="vertical">
+      <nz-descriptions-item nzTitle="User ID">{{clickTrData.id }}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Role ID">{{clickTrData.role_id }}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="UserName">{{clickTrData.username}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Real Name">{{clickTrData.realname}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="PassWord">{{clickTrData.password}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Create Time">{{clickTrData.createTime}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Update Time">{{clickTrData.updateTime}}</nz-descriptions-item>
+    </nz-descriptions>
+  </ng-template>
+  <ng-template #modalFooter>
+    <div class="bottomBtn">
+      <button nz-button nzType="primary" (click)="handleOk()" style="width: 100px;">OK</button>
+      <button nz-button nzType="default" (click)="handleCancelMiddle()" style="width: 100px;">Cancel</button>
+    </div>
+  </ng-template>
+</nz-modal>

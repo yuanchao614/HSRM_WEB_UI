@@ -1,0 +1,51 @@
+<nz-modal nzWrapClassName="vertical-center-modal" nzWidth=600 nzMaskClosable="false" [nzTitle]="modalTitle" [nzFooter]="modalFooter"
+	[nzContent]="modalContent" [(nzVisible)]="isVisibleMiddle" [nzFooter]="null" (nzOnCancel)="handleCancelMiddle()">
+	<ng-template #modalTitle>
+    Add User
+	</ng-template>
+	<ng-template #modalContent>
+            <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+                    <nz-form-item>
+                      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired>User ID</nz-form-label>
+                      <nz-form-control [nzSm]="10" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+                        <input nz-input formControlName="id" />
+                      </nz-form-control>
+                    </nz-form-item>
+                    <nz-form-item>
+                            <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired>User Name</nz-form-label>
+                            <nz-form-control [nzSm]="10" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+                              <input nz-input formControlName="userName" />
+                            </nz-form-control>
+                          </nz-form-item>
+                          <nz-form-item>
+                                <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired>Real Name</nz-form-label>
+                                <nz-form-control [nzSm]="10" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+                                  <input nz-input formControlName="realname" />
+                                </nz-form-control>
+                              </nz-form-item>
+                    <nz-form-item>
+                      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired>Password</nz-form-label>
+                      <nz-form-control [nzSm]="10" [nzXs]="24" nzErrorTip="Please input your password!">
+                        <input
+                          nz-input
+                          type="password"
+                          id="password"
+                          formControlName="password"
+                        />
+                      </nz-form-control>
+                    </nz-form-item>
+                    <!-- <nz-form-item>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="create_time" nzRequired>Create Time</nz-form-label>
+                        <nz-form-control [nzSm]="10" [nzXs]="24" nzErrorTip="create time">
+                            <nz-date-picker formControlName="create_time"></nz-date-picker>
+                        </nz-form-control>
+                      </nz-form-item> -->
+            </form>
+          </ng-template>
+  <ng-template #modalFooter>
+      <div class="bottomBtn">
+        <button nz-button nzType="primary" (click)="handleOk()" style="width: 100px;">OK</button>
+        <button nz-button nzType="default" (click)="handleCancelMiddle()" style="width: 100px;">Cancel</button>
+      </div>
+  </ng-template>
+</nz-modal>

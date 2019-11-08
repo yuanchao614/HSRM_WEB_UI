@@ -10,6 +10,8 @@ const routes: Routes = [
     component: LayoutsComponent,
     children: [
       { path: 'welcome', loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomeModule)},
+      // tslint:disable-next-line: max-line-length
+      { path: 'user-management', loadChildren: () => import('./pages/user-management/user-management.module').then(m => m.UserManagementModule)},
     ]
   },
   { path: 'login', component: LoginComponent },

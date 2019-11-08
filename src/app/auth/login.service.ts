@@ -39,7 +39,5 @@ export class LoginService {
 	logIn(data) {
 		return wsSend('login', data);
 	}
-	
-
 
 }
