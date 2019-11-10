@@ -22,14 +22,14 @@ export class LayoutsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getUserName();
+    // this.getUserName();
   }
 
 
-  getUserName() {
-    this.userName = localStorage.getItem('user_name');
-    console.log(localStorage.getItem('user_name'));
-  }
+  // getUserName() {
+  //   this.userName = localStorage.getItem('user_name');
+  //   console.log(localStorage.getItem('user_name'));
+  // }
 
   logOut() {
     localStorage.removeItem('user_name');

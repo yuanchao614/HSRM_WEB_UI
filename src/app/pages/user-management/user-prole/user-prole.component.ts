@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../user-management.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import * as moment from 'moment';
@@ -54,6 +55,8 @@ export class UserProleComponent implements OnInit {
       isChecked: true
     }
   ];
+  validateForm: FormGroup;
+
   listOfData = [];
   isVisibleMiddle = false;
   deleteIsVisible = false;
@@ -62,12 +65,29 @@ export class UserProleComponent implements OnInit {
   updateTrData = {};
 
   constructor(
+    private fb: FormBuilder,
     private userService: UserService,
     private message: NzMessageService
   ) { }
 
   ngOnInit() {
+    this.initForm();
     this.getData();
+    console.log(this.validateForm);
+  }
+
+  initForm() {
+    this.validateForm = this.fb.group({
+      id: [{ value: null, disabled: false }],
+      userName: [{ value: null, disabled: false }],
+      realname: [{ value: null, disabled: false }],
+      password: [{ value: null, disabled: false }],
+      // create_time: [{ value: new Date(), disabled: false }],
+    });
+  }
+
+  submitForm(): void {
+    console.log(this.validateForm);
   }
 
   getData() {
