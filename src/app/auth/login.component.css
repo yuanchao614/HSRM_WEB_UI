@@ -14,6 +14,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     height: 100%;
-    background: url(http://img4.imgtn.bdimg.com/it/u=2597722055,3918847689&fm=26&gp=0.jpg)
+    background: url(../../assets/login.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
   }
+
+  .title {
+    height: 50px;
+    margin-bottom: 40px;
+  }
+  .title span {
+    font-size: 24px;
+    color: #1890ff;
+  }
+  
