@@ -47,12 +47,13 @@ export class LoginComponent implements OnInit {
 
     const param = '?name=' + data.userName + '&password=' + data.password;
     this.loginService.logIn(param).subscribe((r) => {
+      console.log(r);
       const res: any = r;
       if (res.code == 0) {
-        console.log(r);
+        const res: any = r;
         const loginInfo = {
-          Authorization: 'user',
-          name: this.validateForm.value.userName
+          Authorization: res.data.userInfo.token,
+          name: res.data.userInfo.username
       };
         this._setUserInfo(loginInfo)
         this.router.navigate(['/emas']);

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { LayoutsModule } from './layouts/layouts.module';
+import { HttpInterceptorProviders } from './http-interceptor/index';
 
 
 import { AppComponent } from './app.component';
@@ -32,7 +33,7 @@ registerLocaleData(en);
     BrowserAnimationsModule,
     LayoutsModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [{ provide: NZ_I18N, useValue: en_US }, HttpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

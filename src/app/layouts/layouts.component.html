@@ -20,18 +20,38 @@
                 <li nz-menu-item nzMatchRouter>
                   <a routerLink="/emas/welcome/monitor">monitor</a>
                 </li>
-                <li nz-menu-item nzMatchRouter>
-                  <a>Workplace</a>
-                </li>
               </ul>
             </li>
-            <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
+            <li nz-submenu nzOpen nzTitle="Line Management" nzIcon="form">
               <ul>
                 <li nz-menu-item nzMatchRouter>
-                  <a>Basic Form</a>
+                    <a routerLink="/emas/line-management/update-line">update-line</a>
+                </li>
+                <li nz-menu-item nzMatchRouter>
+                    <a routerLink="/emas/line-management/add-line">add-line</a>
                 </li>
               </ul>
             </li>
+            <li nz-submenu nzOpen nzTitle="High Speed Management" nzIcon="dashboard">
+                <ul>
+                  <li nz-menu-item nzMatchRouter>
+                    <a routerLink="/emas/high-speed-management/update-high-speed">update-high-speed</a>
+                  </li>
+                  <li nz-menu-item nzMatchRouter>
+                    <a routerLink="/emas/high-speed-management/add-high-speed">add-high-speed</a>
+                  </li>
+                </ul>
+            </li>
+            <li nz-submenu nzOpen nzTitle="ticket Management" nzIcon="form">
+                <ul>
+                  <li nz-menu-item nzMatchRouter>
+                      <a routerLink="/emas/ticket-management/update-ticket">update-ticket</a>
+                  </li>
+                  <li nz-menu-item nzMatchRouter>
+                      <a routerLink="/emas/ticket-management/add-ticket">add-ticket</a>
+                  </li>
+                </ul>
+              </li>
             <li nz-submenu nzOpen nzTitle="User Management" nzIcon="user">
                 <ul>
                     <li nz-menu-item nzMatchRouter>
