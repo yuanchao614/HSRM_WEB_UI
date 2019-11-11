@@ -1,1 +1,10 @@
-<p>home works!</p>
+<a nz-dropdown [nzDropdownMenu]="menu">
+        <span style="display: inline-block;width: 100%;height: 50px;background-color: lightblue;">hover me</span>
+      </a>
+      <nz-dropdown-menu #menu="nzDropdownMenu">
+        <ul nz-menu nzSelectable>
+          <li nz-menu-item>1st menu item</li>
+          <li nz-menu-item>2nd menu item</li>
+          <li nz-menu-item>3rd menu item</li>
+        </ul>
+</nz-dropdown-menu>
