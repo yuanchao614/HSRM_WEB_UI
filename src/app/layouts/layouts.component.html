@@ -8,7 +8,7 @@
           <div class="sidebar-logo">
             <a href="https://ng.ant.design/" target="_blank">
               <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
-              <h1>Ant Design Of Angular</h1>
+              <h1>HSRM</h1>
             </a>
           </div>
           <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
@@ -22,7 +22,7 @@
                 </li>
               </ul>
             </li>
-            <li nz-submenu nzOpen nzTitle="Line Management" nzIcon="form">
+            <li nz-submenu nzClose nzTitle="Line Management" nzIcon="form">
               <ul>
                 <li nz-menu-item nzMatchRouter>
                     <a routerLink="/emas/line-management/update-line">update-line</a>
@@ -32,7 +32,7 @@
                 </li>
               </ul>
             </li>
-            <li nz-submenu nzOpen nzTitle="High Speed Management" nzIcon="dashboard">
+            <li nz-submenu nzClose nzTitle="High Speed Management" nzIcon="dashboard">
                 <ul>
                   <li nz-menu-item nzMatchRouter>
                     <a routerLink="/emas/high-speed-management/update-high-speed">update-high-speed</a>
@@ -42,7 +42,7 @@
                   </li>
                 </ul>
             </li>
-            <li nz-submenu nzOpen nzTitle="ticket Management" nzIcon="form">
+            <li nz-submenu nzClose nzTitle="ticket Management" nzIcon="transaction">
                 <ul>
                   <li nz-menu-item nzMatchRouter>
                       <a routerLink="/emas/ticket-management/update-ticket">update-ticket</a>
@@ -52,7 +52,7 @@
                   </li>
                 </ul>
               </li>
-            <li nz-submenu nzOpen nzTitle="User Management" nzIcon="user">
+            <li nz-submenu nzClose nzTitle="User Management" nzIcon="user">
                 <ul>
                     <li nz-menu-item nzMatchRouter>
                         <a routerLink="/emas/user-management/user-prole">user-prole</a>

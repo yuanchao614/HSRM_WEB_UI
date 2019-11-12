@@ -1,1 +1,78 @@
-<p>update-line works!</p>
+<div>
+  <div class="pageHeader">
+    <!-- <form nz-form [formGroup]="validateForm" class="ant-advanced-search-form" (ngSubmit)="submitForm()">
+            <div nz-row [nzGutter]="16">
+              <div nz-col [nzSpan]="6">
+                <nz-form-item nzFlex>
+                  <nz-form-label>Role ID
+                  </nz-form-label>
+                  <nz-form-control>
+                    <nz-select style="width: 150px;" nzShowSearch nzAllowClear nzPlaceHolder="" formControlName="subSystem">
+                      <nz-option *ngFor="let option of listSubSystem" [nzLabel]="option.label" [nzValue]="option.value">
+                      </nz-option>
+                    </nz-select>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col [nzSpan]="6">
+                <nz-form-item nzFlex>
+                  <nz-form-label>User Name
+                  </nz-form-label>
+                  <nz-form-control>
+                    <nz-select style="width: 150px;" nzShowSearch nzAllowClear nzPlaceHolder="" formControlName="subSystem">
+                      <nz-option *ngFor="let option of listSubSystem" [nzLabel]="option.label" [nzValue]="option.value">
+                      </nz-option>
+                    </nz-select>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col [nzSpan]="4">
+                <nz-form-item nzFlex>
+                    <nz-form-control>
+                  <button nz-button nzType="primary">Search</button>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col [nzSpan]="4">
+                  <nz-form-item nzFlex>
+                      <nz-form-control>
+                          <button nz-button nzType="primary" nzShape="circle" (click)="refresh()"><i nz-icon [nzType]="'sync'"
+                            [nzSpin]="false"></i></button>
+                    </nz-form-control>
+                  </nz-form-item>
+                </div>
+            </div>
+          </form> -->
+  </div>
+  <nz-table #basicTable nzBordered [nzData]="listOfData">
+    <thead>
+      <tr>
+        <th *ngFor="let item of renderHeader; let i = index">
+          {{item.name}}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data; let i = index">
+        <td>{{ data.line_num }}</td>
+        <td>{{ data.start_city }}</td>
+        <td>{{ data.end_city }}</td>
+        <td>
+          <nz-select nzShowSearch nzAllowClear nzPlaceHolder="途经站点" style="width: 150px;">
+            <nz-option [nzLabel]="item" [nzValue]="item" *ngFor="let item of stationList[i]"></nz-option>
+          </nz-select>
+        </td>
+        <td>{{ data.km }}</td>
+        <td>{{ data.max_speed }}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+  <div nz-row>
+    <div nz-col nzSpan="4">
+      <button nz-button nzType="primary" style="width: 100px;">Edit</button>
+    </div>
+    <div nz-col nzSpan="4">
+      <button nz-button nzType="danger" style="width: 100px;">Delete</button>
+    </div>
+  </div>
+</div>
