@@ -8,6 +8,7 @@ const urlMap = {
     deleteUser: {url: '/user/deleteUser', dataType: 1},
     getAll: { url: '/getheros', dataType: 1 },
     getById: { url: '/gethero?id=', dataType: 1 },
+    getLine: { url: '/getLine', dataType: 1 }
 };
 
 

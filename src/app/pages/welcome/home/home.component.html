@@ -1,10 +1,63 @@
 <a nz-dropdown [nzDropdownMenu]="menu">
-        <span style="display: inline-block;width: 100%;height: 50px;background-color: lightblue;">hover me</span>
-      </a>
-      <nz-dropdown-menu #menu="nzDropdownMenu">
-        <ul nz-menu nzSelectable>
-          <li nz-menu-item>1st menu item</li>
-          <li nz-menu-item>2nd menu item</li>
-          <li nz-menu-item>3rd menu item</li>
-        </ul>
+  <span style="display: inline-block;width: 100%;height: 50px;background-color: lightblue;">hover me</span>
+</a>
+<nz-dropdown-menu #menu="nzDropdownMenu">
+  <ul nz-menu nzSelectable>
+    <li nz-menu-item>1st menu item</li>
+    <li nz-menu-item>2nd menu item</li>
+    <li nz-menu-item>3rd menu item</li>
+  </ul>
 </nz-dropdown-menu>
+
+<div nz-row>
+  <div nz-row>
+    <div nz-col nzSpan="6">
+      <nz-card nzHoverable="true" style="width: 300px;margin-top: 16px;background-color: #4A90E2;" [nzLoading]="loading">
+        <nz-card-meta [nzTitle]="lineTitle" [nzDescription]="lineDescription"></nz-card-meta>
+      </nz-card>
+    </div>
+    <div nz-col nzSpan="6">
+      <nz-card nzHoverable="true" style="width: 300px;margin-top: 16px;background-color: #50E3C2;" [nzLoading]="loading">
+        <nz-card-meta [nzTitle]="railTitle" [nzDescription]="railDescription"></nz-card-meta>
+      </nz-card>
+    </div>
+    <div nz-col nzSpan="6">
+      <nz-card nzHoverable="true" style="width: 300px;margin-top: 16px;background-color: #9013FE;" [nzLoading]="loading">
+        <nz-card-meta [nzTitle]="ticketTitle" [nzDescription]="ticketDescription"></nz-card-meta>
+      </nz-card>
+    </div>
+    <div nz-col nzSpan="6">
+      <nz-card nzHoverable="true" style="width: 300px;margin-top: 16px;background-color: #4A4A4A;" [nzLoading]="loading">
+        <nz-card-meta [nzTitle]="userTitle" [nzDescription]="userDescription"></nz-card-meta>
+      </nz-card>
+    </div>
+    <ng-template #lineTitle>
+            <h3 style="color: white;">High-speed Line</h3>
+    </ng-template>
+    <ng-template #railTitle>
+            <h3 style="color: white;">High-speed Rail</h3>
+    </ng-template>
+    <ng-template #ticketTitle>
+            <h3 style="color: white;">High-speed Ticket</h3>
+    </ng-template>
+    <ng-template #userTitle>
+            <h3 style="color: white;">User management</h3>
+    </ng-template>
+    <ng-template #lineDescription>
+            <h4 style="color: white;">高铁线路：{{lineNum}}条</h4>
+    </ng-template>
+    <ng-template #railDescription>
+            <h4 style="color: white;">高铁车辆：8辆</h4>
+    </ng-template>
+    <ng-template #ticketDescription>
+            <h4 style="color: white;">高铁余票：100张</h4>
+    </ng-template>
+    <ng-template #userDescription>
+            <h4 style="color: white;">管理用户：{{userNum}}个</h4>
+    </ng-template>
+  </div>
+  <div nz-row>
+    <div nz-col nzSpan="12">echarts_1</div>
+    <div nz-col nzSpan="12">echarts_2</div>
+  </div>
+</div>
