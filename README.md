@@ -1,4 +1,5 @@
-# AngularApp
+# HSRM_WEB_UI
+> high-speed rail mangement system
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.3.
 
