@@ -9,6 +9,7 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { MonitorComponent } from './monitor/monitor.component';
+import {NgxEchartsModule} from 'ngx-echarts';
 
 
 const COMPONENT = [
@@ -30,7 +31,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  imports: [ CommonModule, NgZorroAntdModule, RouterModule.forChild(routes)],
+  imports: [ CommonModule, NgZorroAntdModule, RouterModule.forChild(routes), NgxEchartsModule],
   declarations: [WelcomeComponent, HomeComponent, MonitorComponent],
 })
 export class WelcomeModule { }

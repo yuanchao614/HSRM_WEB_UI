@@ -26,4 +26,12 @@ export class UserService {
    updatePassword(data) {
        return wsSend('updatePassword', data);
    }
+
+   operatorRecord(data) {
+       return wsSend('userOperator', data);
+   }
+
+   getOperatorRecords() {
+       return wsSend('getUserOperators');
+   }
 }

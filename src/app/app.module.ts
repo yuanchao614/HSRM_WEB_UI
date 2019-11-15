@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { LayoutsModule } from './layouts/layouts.module';
 import { HttpInterceptorProviders } from './http-interceptor/index';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 
 import { AppComponent } from './app.component';
@@ -31,7 +32,8 @@ registerLocaleData(en);
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    LayoutsModule
+    LayoutsModule,
+    NgxEchartsModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }, HttpInterceptorProviders],
   bootstrap: [AppComponent]
