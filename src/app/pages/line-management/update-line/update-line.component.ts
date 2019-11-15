@@ -33,13 +33,13 @@ export class UpdateLineComponent implements OnInit {
       isChecked: true
     },
     {
-      name: 'Km',
+      name: 'Kmkilometer(km)',
       key: null,
       value: 'km',
       isChecked: true
     },
     {
-      name: 'Max Speed',
+      name: 'Max Speed(km/h)',
       key: null,
       value: 'max_speed',
       isChecked: true

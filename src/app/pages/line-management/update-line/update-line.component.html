@@ -62,8 +62,8 @@
             <nz-option [nzLabel]="item" [nzValue]="item" *ngFor="let item of stationList[i]"></nz-option>
           </nz-select>
         </td>
-        <td>{{ data.km }}</td>
-        <td>{{ data.max_speed }}</td>
+        <td>{{ data.km + 'km'}}</td>
+        <td>{{ data.max_speed + 'km/h' }}</td>
       </tr>
     </tbody>
   </nz-table>

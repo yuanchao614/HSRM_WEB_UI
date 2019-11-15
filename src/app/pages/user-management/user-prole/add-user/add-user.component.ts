@@ -77,10 +77,29 @@ export class AddUserComponent implements OnInit {
       const res: any = r;
       const resData = res.code;
       if (resData === 0) {
+        this.operatorLog();
         this.message.create('success', `${res.msg}`);
       } else {
         this.message.create('error', `${res.msg}`);
       }
+    });
+  }
+
+  operatorLog() {
+    const operatorId = this.validateForm.value.id;
+    const operatorName = localStorage.getItem('user_name');
+    const operatorData = this.validateForm.value.userName;
+    const operatorType = 'AddUser';
+    const data = {
+      operatorId,
+      operatorName,
+      operatorData,
+      operatorType
+    };
+    // tslint:disable-next-line: max-line-length
+    const param = `?operator_id=${data.operatorId}&operator_name=${data.operatorName}&operator_data=${data.operatorData}&operator_type=${operatorType}`;
+    this.userService.operatorRecord(param).subscribe(r => {
+      console.log(r);
     });
   }
 

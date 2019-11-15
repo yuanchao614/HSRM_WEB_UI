@@ -1,0 +1,19 @@
+.dataTable {
+    height: 850px;
+    max-height: 850px;
+    /* overflow-y: scroll; */
+    background: #fff;
+    box-shadow: #666 0px 0px 10px;
+    opacity: 0.9;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.title {
+    color: rgba(35, 140, 230, 1);
+    /* color: black; */
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: 2px solid rgba(238, 238, 238, 1);
+    padding: 15px 0 15px 32px;
+}

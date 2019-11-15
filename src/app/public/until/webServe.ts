@@ -6,6 +6,8 @@ const urlMap = {
     register: { url: '/user/register', dataType: 1},
     updatePassword: {url: '/user/updatePassword', dataType: 1},
     deleteUser: {url: '/user/deleteUser', dataType: 1},
+    userOperator: { url: '/user/operator', dataType: 1},
+    getUserOperators: {url: '/user/alloperators', dataType: 1},
     getAll: { url: '/getheros', dataType: 1 },
     getById: { url: '/gethero?id=', dataType: 1 },
     getLine: { url: '/getLine', dataType: 1 }

@@ -55,6 +55,7 @@ export class DeleteUserComponent implements OnInit {
       const res: any = r;
       // const resData = res.code;
       if (res.code === 200) {
+        this.operatorLog(data);
         this.message.create('success', `${res.msg}`);
       } else {
         this.message.create('error', `${res.msg}`);
@@ -62,6 +63,24 @@ export class DeleteUserComponent implements OnInit {
     });
     this.deleteIsVisible = false;
     this.deleteCloseModal.emit();
+  }
+
+  operatorLog(item) {
+    const operatorId = item.id;
+    const operatorName = localStorage.getItem('user_name');
+    const operatorData = item.username;
+    const operatorType = 'DeleteUser';
+    const data = {
+      operatorId,
+      operatorName,
+      operatorData,
+      operatorType
+    };
+    // tslint:disable-next-line: max-line-length
+    const param = `?operator_id=${data.operatorId}&operator_name=${data.operatorName}&operator_data=${data.operatorData}&operator_type=${operatorType}`;
+    this.userService.operatorRecord(param).subscribe(r => {
+      console.log(r);
+    });
   }
 
 }
