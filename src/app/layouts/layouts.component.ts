@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SystemService } from 'src/app/service/system.service';
+import { LayoutsService } from './layouts.service';
 
 
 @Component({
@@ -14,7 +15,8 @@ export class LayoutsComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private systemService: SystemService
+    private systemService: SystemService,
+    private layoutsService: LayoutsService
   ) {
     // 设置时间
     this.systemService.timeSet();
@@ -32,6 +34,13 @@ export class LayoutsComponent implements OnInit {
   // }
 
   logOut() {
+    const data = {
+      userName: localStorage.getItem('user_name')
+    };
+    const param = `?name=${data.userName}`;
+    this.layoutsService.loginOut(param).subscribe(r => {
+      console.log(r);
+    });
     localStorage.removeItem('user_name');
     localStorage.removeItem('access_token');
     this.router.navigate(['/login']);
