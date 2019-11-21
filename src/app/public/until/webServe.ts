@@ -2,6 +2,7 @@ import { Subject } from 'rxjs';
 
 const urlMap = {
     login: { url: '/user/login', dataType: 1},
+    loginOut: { url: '/user/loginout', dataType: 1},
     users: { url: '/user/allUsers', dataType: 1},
     register: { url: '/user/register', dataType: 1},
     updatePassword: {url: '/user/updatePassword', dataType: 1},

@@ -66,7 +66,7 @@ export class DeleteUserComponent implements OnInit {
   }
 
   operatorLog(item) {
-    const operatorId = item.id;
+    const operatorId = item.user_id;
     const operatorName = localStorage.getItem('user_name');
     const operatorData = item.username;
     const operatorType = 'DeleteUser';

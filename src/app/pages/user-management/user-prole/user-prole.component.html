@@ -2,13 +2,13 @@
   <div class="pageHeader">
     <form nz-form [formGroup]="validateForm" class="ant-advanced-search-form" (ngSubmit)="submitForm()">
       <div nz-row [nzGutter]="16">
-        <div nz-col [nzSpan]="6">
+        <div nz-col [nzSpan]="5">
           <nz-form-item nzFlex>
             <nz-form-label>Role ID
             </nz-form-label>
             <nz-form-control>
-              <nz-select style="width: 150px;" nzShowSearch nzAllowClear nzPlaceHolder="" formControlName="subSystem">
-                <nz-option *ngFor="let option of listSubSystem" [nzLabel]="option.label" [nzValue]="option.value">
+              <nz-select style="width: 150px;" nzShowSearch nzAllowClear nzPlaceHolder="" formControlName="roleName">
+                <nz-option *ngFor="let option of roleNameList" [nzLabel]="option.label" [nzValue]="option.value">
                 </nz-option>
               </nz-select>
               <!-- <input
@@ -20,26 +20,26 @@
             </nz-form-control>
           </nz-form-item>
         </div>
-        <div nz-col [nzSpan]="6">
+        <div nz-col [nzSpan]="5">
           <nz-form-item nzFlex>
             <nz-form-label>User Name
             </nz-form-label>
             <nz-form-control>
-              <nz-select style="width: 150px;" nzShowSearch nzAllowClear nzPlaceHolder="" formControlName="subSystem">
-                <nz-option *ngFor="let option of listSubSystem" [nzLabel]="option.label" [nzValue]="option.value">
+              <nz-select style="width: 150px;" nzShowSearch nzAllowClear nzPlaceHolder="" formControlName="userName">
+                <nz-option *ngFor="let option of userNameList" [nzLabel]="option.label" [nzValue]="option.value">
                 </nz-option>
               </nz-select>
             </nz-form-control>
           </nz-form-item>
         </div>
-        <div nz-col [nzSpan]="4">
+        <div nz-col [nzSpan]="2">
           <nz-form-item nzFlex>
               <nz-form-control>
             <button nz-button nzType="primary">Search</button>
             </nz-form-control>
           </nz-form-item>
         </div>
-        <div nz-col [nzSpan]="4">
+        <div nz-col [nzSpan]="2">
             <nz-form-item nzFlex>
                 <nz-form-control>
                     <button nz-button nzType="primary" nzShape="circle" (click)="refresh()"><i nz-icon [nzType]="'sync'"
@@ -61,8 +61,8 @@
     <tbody>
       <tr *ngFor="let data of basicTable.data; let i = index" (click)="clickTr(data)" (dblclick)="updateShowModal(data)"
         [ngClass]="{'active': clickTrData.username == data.username}">
-        <td>{{ data.id }}</td>
-        <td>{{ data.role_id }}</td>
+        <td>{{ data.user_id }}</td>
+        <td>{{ data.role_name }}</td>
         <td>{{ data.username }}</td>
         <td>{{ data.realname }}</td>
         <td>{{ data.password }}</td>
@@ -72,10 +72,10 @@
     </tbody>
   </nz-table>
   <div nz-row>
-    <div nz-col nzSpan="4">
+    <div nz-col nzSpan="3">
       <button nz-button nzType="primary" style="width: 100px;" (click)="showModalMiddle()">Add User</button>
     </div>
-    <div nz-col nzSpan="4">
+    <div nz-col nzSpan="3">
       <button nz-button nzType="danger" style="width: 100px;" (click)="deleteShowModal()">Delete User</button>
     </div>
   </div>

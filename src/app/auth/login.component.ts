@@ -50,12 +50,12 @@ export class LoginComponent implements OnInit {
       console.log(r);
       const res: any = r;
       if (res.code == 0) {
-        const res: any = r;
+        // const res: any = r;
         const loginInfo = {
           Authorization: res.data.userInfo.token,
           name: res.data.userInfo.username
       };
-        this._setUserInfo(loginInfo)
+        this._setUserInfo(loginInfo);
         this.router.navigate(['/emas']);
       } else {
         this.message.create('error', `${res.msg}`);

@@ -84,7 +84,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.getData();
-    this.getLineChart();
+    setTimeout(() => {
+      this.getLineChart();
+    }, 1000);
+    // this.getLineChart();
   }
 
 
@@ -94,11 +97,6 @@ export class HomeComponent implements OnInit {
       const res: any = r;
       this.userNum = res.data.result.length;
     });
-    this.chartOption = this.option;
-  }
-
-  getLineChart() {
-    // app.title = '折柱混合';
     this.homeService.getLine().subscribe(r => {
       console.log(r);
       const res: any = r;
@@ -110,6 +108,26 @@ export class HomeComponent implements OnInit {
         this.yLineMaxSpeed.push(item.max_speed);
       });
     });
+    this.chartOption = this.option;
+  }
+
+  getLineChart() {
+    // app.title = '折柱混合';
+    // this.xLineValue = [];
+    // this.yLineKmValue = [];
+    // this.yLineMaxSpeed = [];
+    // this.homeService.getLine().subscribe(r => {
+    //   console.log(r);
+    //   const res: any = r;
+    //   const resData = res.data.result;
+    //   this.lineNum = res.data.result.length;
+    //   resData.forEach(item => {
+    //     this.xLineValue.push(item.line_num);
+    //     this.yLineKmValue.push(item.km);
+    //     this.yLineMaxSpeed.push(item.max_speed);
+    //   });
+    // });
+    console.log(this.xLineValue);
     this.lineChartOption = {
       tooltip: {
         trigger: 'axis',

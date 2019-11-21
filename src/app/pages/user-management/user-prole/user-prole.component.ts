@@ -19,9 +19,9 @@ export class UserProleComponent implements OnInit {
       isChecked: true
     },
     {
-      name: 'Role ID',
+      name: 'Role Name',
       key: null,
-      value: 'role_id',
+      value: 'role_name',
       isChecked: true
     },
     {
@@ -63,6 +63,8 @@ export class UserProleComponent implements OnInit {
   updateIsVisble = false;
   clickTrData = {};
   updateTrData = {};
+  userNameList = [];
+  roleNameList = [];
 
   constructor(
     private fb: FormBuilder,
@@ -82,6 +84,7 @@ export class UserProleComponent implements OnInit {
       userName: [{ value: null, disabled: false }],
       realname: [{ value: null, disabled: false }],
       password: [{ value: null, disabled: false }],
+      roleName: [{ value: null, disabled: false }],
       // create_time: [{ value: new Date(), disabled: false }],
     });
   }
@@ -94,12 +97,12 @@ export class UserProleComponent implements OnInit {
     this.userService.getUser().subscribe((r) => {
       console.log(r);
       const res: any = r;
-      if (res.code == 0) {
+      if (res.code === 0) {
         this.message.create('success', `Data request successed`);
         const resData = res.data.result;
         resData.forEach(item => {
           item.createTime = moment(item.create_time).format('YYYY/M/DD HH:mm');
-          item.updateTime = item.updateTime ? moment(item.update_time).format('YYYY/M/DD HH:mm') : 'never change password';
+          item.updateTime = item.update_time ? moment(item.update_time).format('YYYY/M/DD HH:mm') : 'never change password';
         });
         this.listOfData = resData;
       } else {

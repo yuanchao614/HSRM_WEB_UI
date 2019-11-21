@@ -11,7 +11,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let data of basicTable.data; let i = index">
-              <td>{{ data.operator_id }}</td>
+              <td>{{ i + 1 }}</td>
               <td>{{ data.operator_name }}</td>
               <td>{{ data.operator_data }}</td>
               <td>{{ data.operator_type }}</td>
