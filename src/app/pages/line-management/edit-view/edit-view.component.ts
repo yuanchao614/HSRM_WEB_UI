@@ -1,20 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LineManagementService } from '../line-management-service';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd';
-
-
-
+import * as moment from 'moment';
 
 @Component({
-  selector: 'app-add-line',
-  templateUrl: './add-line.component.html',
-  styleUrls: ['./add-line.component.css']
+  selector: 'app-edit-view',
+  templateUrl: './edit-view.component.html',
+  styleUrls: ['./edit-view.component.css']
 })
-export class AddLineComponent implements OnInit {
+export class EditViewComponent implements OnInit, OnDestroy {
   validateForm: FormGroup;
-
+  getBSubjectData: any;
 
   constructor(
     private fb: FormBuilder,
@@ -25,6 +23,8 @@ export class AddLineComponent implements OnInit {
 
   ngOnInit() {
     this.initForm();
+    this.getTrData();
+    this.fatchForm();
   }
 
   initForm() {
@@ -43,9 +43,28 @@ export class AddLineComponent implements OnInit {
     });
   }
 
-  addLine() {
+  fatchForm(): void  {
+    this.validateForm.patchValue({
+      lineNum: this.getBSubjectData.line_num,
+      startTime: moment(Number(this.getBSubjectData.startTime)).format(),
+      endTime: moment(Number(this.getBSubjectData.endTime)).format(),
+      startStation: this.getBSubjectData.start_city,
+      endStation: this.getBSubjectData.end_city,
+      price: this.getBSubjectData.price,
+      km: this.getBSubjectData.km,
+      maxSpeed: this.getBSubjectData.max_speed,
+      remark: this.getBSubjectData.remark,
+      passStation: this.getBSubjectData.pass_station
+    });
+  }
+
+  getTrData() {
+    this.getBSubjectData = JSON.parse(localStorage.getItem('EDIT_VIEW_LINE'));
+    console.log(this.getBSubjectData);
+  }
+
+  editLine() {
     const value = this.validateForm.value;
-    console.log(value);
     const param = {
       line_num: value.lineNum,
       start_city: value.startStation,
@@ -59,12 +78,17 @@ export class AddLineComponent implements OnInit {
       remark: value.remark
   };
     console.log(param);
-    this.lineManagementService.addLine(param).subscribe(r => {
+    this.lineManagementService.updateLine(param).subscribe(r => {
     console.log(r);
-    if (r.code === 2003) {
+    if (r.code === 2004) {
       this.message.create('success', `${r.msg}`);
     }
   });
+  }
+
+  // tslint:disable-next-line: use-lifecycle-interface
+  ngOnDestroy(): void {
+    localStorage.removeItem('EDIT_VIEW_LINE');
   }
 
   submitForm(): void {
@@ -82,5 +106,4 @@ export class AddLineComponent implements OnInit {
   back() {
     this.router.navigate(['/emas/line-management/update-line']);
   }
-
 }

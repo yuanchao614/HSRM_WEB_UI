@@ -13,43 +13,43 @@ export class UserProleComponent implements OnInit {
 
   renderHeader = [
     {
-      name: 'User ID',
+      name: '用户ID',
       key: null,
       value: 'id',
       isChecked: true
     },
     {
-      name: 'Role Name',
+      name: '角色ID',
       key: null,
-      value: 'role_name',
+      value: 'role_ID',
       isChecked: true
     },
     {
-      name: 'User Name',
+      name: '用户名',
       key: null,
       value: 'username',
       isChecked: true
     },
     {
-      name: 'Real Name',
+      name: '用户真实姓名',
       key: null,
       value: 'realname',
       isChecked: true
     },
     {
-      name: 'passWord',
+      name: '密码',
       key: null,
       value: 'password',
       isChecked: true
     },
     {
-      name: 'Create Time',
+      name: '创建时间',
       key: null,
       value: 'create_time',
       isChecked: true
     },
     {
-      name: 'Update Time',
+      name: '修改时间',
       key: null,
       value: 'update_time',
       isChecked: true
@@ -61,7 +61,11 @@ export class UserProleComponent implements OnInit {
   isVisibleMiddle = false;
   deleteIsVisible = false;
   updateIsVisble = false;
-  clickTrData = {};
+   // checkbox
+   allChecked = false;
+   indeterminate = false;
+   checkbox = true;
+  clickTrData: any;
   updateTrData = {};
   userNameList = [];
   roleNameList = [];
@@ -102,7 +106,8 @@ export class UserProleComponent implements OnInit {
         const resData = res.data.result;
         resData.forEach(item => {
           item.createTime = moment(item.create_time).format('YYYY/M/DD HH:mm');
-          item.updateTime = item.update_time ? moment(item.update_time).format('YYYY/M/DD HH:mm') : 'never change password';
+          // tslint:disable-next-line: max-line-length
+          item.updateTime = item.update_time ? moment(item.update_time).format('YYYY/M/DD HH:mm') : moment(item.create_time).format('YYYY/M/DD HH:mm');
         });
         this.listOfData = resData;
       } else {
@@ -111,24 +116,48 @@ export class UserProleComponent implements OnInit {
     });
   }
 
-  refresh() {
-    this.getData();
-  }
-
-  clickTr(data) {
-    this.clickTrData = data;
-  }
-
   showModalMiddle(): void {
     this.isVisibleMiddle = true;
   }
 
-  deleteShowModal(): void {
-    const atrrDataList = Object.keys(this.clickTrData);
-    if (atrrDataList.length) {
-      this.deleteIsVisible = true;
+  deleteUser() {
+    const clickTr = [];
+    this.listOfData.forEach(item => {
+      if (item.checked) {
+        clickTr.push(item);
+      }
+    });
+    if (clickTr.length === 1) {
+      this.clickTrData = clickTr[0];
+      const param = {
+        name: this.clickTrData.username
+      };
+      this.userService.deleteUser(param).subscribe(r => {
+        console.log(r);
+        if (r.code === 1002) {
+          this.getData();
+          this.operatorLog();
+          this.message.create('success', `${r.msg}`);
+        }
+      });
     } else {
-      this.message.create('warning', `Please choice one user first`);
+      this.message.create('warning', `请选中一条数据!`);
+    }
+  }
+
+  updatePassword() {
+    const clickTr = [];
+    this.listOfData.forEach(item => {
+      if (item.checked) {
+        clickTr.push(item);
+      }
+    });
+    if (clickTr.length === 1) {
+      this.clickTrData = clickTr[0];
+      this.updateTrData =  this.clickTrData;
+      this.updateIsVisble = true;
+    } else {
+      this.message.create('warning', `请选中一条数据!`);
     }
   }
 
@@ -140,13 +169,47 @@ export class UserProleComponent implements OnInit {
 
   closeModal() {
     this.isVisibleMiddle = false;
+    this.updateIsVisble = false;
+    this.deleteIsVisible = false;
+    setTimeout(() => {
+      this.getData();
+    }, 500);
   }
 
-  deleteCloseModal() {
-    this.deleteIsVisible = false;
+  // check
+  refreshStatus(): void {
+    const validData = this.listOfData.filter(value => !value.disabled);
+    const allChecked = validData.length > 0 && validData.every(value => value.checked === true);
+    const allUnChecked = validData.every(value => !value.checked);
+    this.allChecked = allChecked;
+    this.indeterminate = !allChecked && !allUnChecked;
   }
-  updateCloseModal() {
-    this.updateIsVisble = false;
+
+  checkAll(value: boolean): void {
+    this.listOfData.forEach(data => {
+      if (!data.disabled) {
+        data.checked = value;
+      }
+    });
+    this.refreshStatus();
+  }
+
+  operatorLog() {
+    const operator_name = localStorage.getItem('user_name');
+    const operator_data = this.clickTrData.username;
+    const data = {
+      // operator_id,
+      operator_name,
+      operator_data: `用户名为${operator_data}`,
+      operator_type: '删除',
+      operator_module: 'User-Management',
+      operator_time: moment().format('YYYY-MM-DD HH:mm:ss')
+    };
+    // tslint:disable-next-line: max-line-length
+    const param = data;
+    this.userService.operatorlog(param).subscribe(r => {
+      console.log(r);
+    });
   }
 
 }

@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+/* ng-zooro分页样式颜色重置 */
+.ant-pagination-item-active {
+    border-color: #30CCC1;
+}
+
+.ant-pagination-item-active a {
+    color: #30CCC1;
+}

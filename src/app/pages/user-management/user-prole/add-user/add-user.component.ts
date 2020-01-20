@@ -63,20 +63,20 @@ export class AddUserComponent implements OnInit {
     // const time = this.validateForm.value.create_time.moment;
     // const createTime = moment(time).format().split('+')[0];
     const data = {
-      userId: id,
-      userName: username,
-      realName: realname,
-      passWord: password,
-      // create_time: createTime
+      user_id: id,
+      username,
+      realname,
+      password,
+      role_id: 1, // roleID注册时默认为1
+      create_time:  moment().format('YYYY-MM-DD HH:mm:ss')
     };
+    const param = data;
     console.log(data);
-    // tslint:disable-next-line: max-line-length
-    const param = '?id=' + data.userId + '&name=' + data.userName + '&realname=' + data.realName + '&password=' + data.passWord;
     this.userService.addUser(param).subscribe((r) => {
       console.log(r);
       const res: any = r;
       const resData = res.code;
-      if (resData === 0) {
+      if (resData === 1003) {
         this.operatorLog();
         this.message.create('success', `${res.msg}`);
       } else {
@@ -86,19 +86,21 @@ export class AddUserComponent implements OnInit {
   }
 
   operatorLog() {
-    const operatorId = this.validateForm.value.id;
-    const operatorName = localStorage.getItem('user_name');
-    const operatorData = this.validateForm.value.userName;
-    const operatorType = 'AddUser';
+    // tslint:disable-next-line: variable-name
+    const operator_name = localStorage.getItem('user_name');
+    // tslint:disable-next-line: variable-name
+    const operator_data = this.validateForm.value.userName;
     const data = {
-      operatorId,
-      operatorName,
-      operatorData,
-      operatorType
+      // operator_id,
+      operator_name,
+      operator_data: `用户名为${operator_data}`,
+      operator_type: '新增',
+      operator_module: 'User-Management',
+      operator_time: moment().format('YYYY-MM-DD HH:mm:ss')
     };
     // tslint:disable-next-line: max-line-length
-    const param = `?operator_id=${data.operatorId}&operator_name=${data.operatorName}&operator_data=${data.operatorData}&operator_type=${operatorType}`;
-    this.userService.operatorRecord(param).subscribe(r => {
+    const param = data;
+    this.userService.operatorlog(param).subscribe(r => {
       console.log(r);
     });
   }

@@ -51,24 +51,24 @@ export class UpdatePasswordComponent implements OnInit {
   }
 
   updatePassword() {
-    const userName = this.validateForm.value.userName;
+    const username = this.validateForm.value.userName;
     const oldPassword = this.validateForm.value.oldPassword;
     const newPassword = this.validateForm.value.newPassword;
     const conformPassword = this.validateForm.value.conformPassword;
     // const time = this.validateForm.value.update_time;
     const data = {
-      userName,
+      username,
       oldPassword,
       newPassword,
       conformPassword,
-      // updateTime
+      updateTime:  moment().format('YYYY-MM-DD HH:mm:ss')
     };
-    // tslint:disable-next-line: max-line-length
-    const param = `?name=${data.userName}&oldPassword=${data.oldPassword}&newPassword=${data.newPassword}&againPassword=${data.conformPassword}`;
+    const param = data;
     this.userService.updatePassword(param).subscribe(r => {
       console.log(r);
       const res: any = r;
       if (res.code === 200) {
+        this.operatorLog();
         this.updateIsVisble = false;
         this.message.create('success', `${res.msg}`);
         this.closeModal.emit();
@@ -87,6 +87,29 @@ export class UpdatePasswordComponent implements OnInit {
   handleOk(): void {
     console.log('Button ok clicked!');
     this.updatePassword();
+  }
+
+  operatorLog() {
+    // tslint:disable-next-line: variable-name
+    // const operator_id = this.clickTrData.user_id;
+    // tslint:disable-next-line: variable-name
+    const operator_name = localStorage.getItem('user_name');
+    // tslint:disable-next-line: variable-name
+    const operator_data = this.updateTrData.username;
+    // tslint:disable-next-line: variable-name
+    const data = {
+      // operator_id,
+      operator_name,
+      operator_data: `用户名为${operator_data}`,
+      operator_type: '修改',
+      operator_module: 'User-Management',
+      operator_time: moment().format('YYYY-MM-DD HH:mm:ss')
+    };
+    // tslint:disable-next-line: max-line-length
+    const param = data;
+    this.userService.operatorlog(param).subscribe(r => {
+      console.log(r);
+    });
   }
 
 

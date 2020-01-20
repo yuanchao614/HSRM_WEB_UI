@@ -1,0 +1,77 @@
+
+<div class="deal-order">
+    <div class="body">
+        <div class="content">
+          <div class="row">
+              <div class="col">
+                <div class="col-title">
+                  <div class="title-name">高铁线路信息模块</div>
+                  <div class="title-operating">
+                    <div>
+                        <button nz-button class="headButton">所有成员</button>
+                    </div>
+                    <div>
+                        <button nz-button  class="headButton" (click)="addLine()">新建</button>
+                    </div>
+                    <div>
+                        <button nz-button class="headButton" (click)="goEditView()">修改/查看</button>
+                    </div>
+                    <div>
+                        <button nz-button class="headButton" (click)="deleteLineById()">删除</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-body">
+                  <nz-table id="nzTable" #basicTable [nzData]="listOfData" [nzShowPagination]="true">
+                    <thead>
+                      <tr class="tableHead">
+                        <!-- <th nzWidth="0.5rem"><i class="circle grey"></i></th> -->
+                        <th nzWidth="1rem" nzAlign="left" *ngFor="let item of renderHeader">
+                          
+                            {{item.name}}
+                         
+                        </th>
+                        <th
+                        nzWidth="62px"
+                        nzShowCheckbox
+                        *ngIf="checkbox"
+                        [(nzChecked)]="allChecked"
+                        [nzIndeterminate]="indeterminate"
+                        (nzCheckedChange)="checkAll($event)"
+                      ></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let data of basicTable.data; let i = index;">
+                          <td>{{ data.line_num }}</td>
+                          <td>{{ data.start_city }}</td>
+                          <td>{{ data.end_city }}</td>
+                          <td>{{ data.changeStartTime }}</td>
+                          <td>{{ data.changeEndTime }}</td>
+                          <td>
+                              <button nz-button nz-popover nzType="link" nzTitle="列车途径站点" [nzContent]="contactContentTemplate" style="padding: 0;">
+                                  途径站点
+                              </button>
+                              <ng-template #contactContentTemplate>
+                                  <ul>
+                                    <li *ngFor="let item of stationList[i]">{{item}}</li>
+                                  </ul>
+                                </ng-template>
+                              <!-- <nz-select nzShowSearch nzAllowClear nzPlaceHolder="途经站点" style="width: 150px;">
+                                <nz-option [nzLabel]="item" [nzValue]="item" *ngFor="let item of stationList[i]"></nz-option>
+                              </nz-select> -->
+                            </td>
+                            <td>{{ data.km + ' km'}}</td>
+                            <td>{{ data.price + ' RMB'}}</td>
+                            <td>{{ data.max_speed + ' kM/h' }}</td>
+                            <td>{{ data.remark }}</td>
+                        <td nzShowCheckbox *ngIf="checkbox" [(nzChecked)]="data.checked" (nzCheckedChange)="refreshStatus()"></td>
+                        </tr>
+                    </tbody>
+                  </nz-table>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>

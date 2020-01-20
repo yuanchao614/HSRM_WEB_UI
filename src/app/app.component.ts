@@ -11,10 +11,10 @@ export class AppComponent {
 
   constructor(
         private ls: LoginService,
-	) {
+        ) {
         // 判断本地token是否需要用户登录
         if (!this.ls.autoAccessToken()) {
-			console.warn('token failure, please login!');
-		}
-	}
+          console.warn('token failure, please login!');
+        }
+      }
 }

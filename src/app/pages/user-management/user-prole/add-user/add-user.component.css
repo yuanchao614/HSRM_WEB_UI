@@ -1,8 +1,43 @@
 ::ng-deep .vertical-center-modal {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 ::ng-deep .vertical-center-modal .ant-modal {
-        top: 0;
-      }
+  top: 0;
+}
+
+.header-title {
+  height: 25px;
+  width: 100px;
+  text-align: center;
+  border-left: 5px solid #30CCC1;
+  border-right: 5px solid #30CCC1;
+  border-radius: 3px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+
+.footer-btn {
+  text-align: center;
+}
+
+.footer-btn button:first-child {
+  border: 1px solid rgba(48, 204, 193, 1);
+  border-radius: 6px;
+  color: #30CCC1;
+}
+
+.footer-btn button:nth-child(2) {
+  border: 1px solid rgba(48, 204, 193, 1);
+  background: rgba(48, 204, 193, 1);
+  border-radius: 6px;
+  color: white;
+}
+
+::ng-deep .export .ant-form-item-label {
+  text-align: right;
+  font-weight: bold;
+}

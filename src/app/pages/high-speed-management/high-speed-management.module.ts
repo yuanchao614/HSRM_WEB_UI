@@ -6,12 +6,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UpdateHighSpeedComponent } from './update-high-speed/update-high-speed.component';
 import { AddHighSpeedComponent } from './add-high-speed/add-high-speed.component';
+import { HighSpeedManageComponent } from './high-speed-manage/high-speed-manage.component';
 
 
 const COMPONENT = [
     HighSpeedManagementComponent,
     UpdateHighSpeedComponent,
-    AddHighSpeedComponent
+    AddHighSpeedComponent,
+    HighSpeedManageComponent
 ];
 
 const routes: Routes = [
@@ -19,6 +21,7 @@ const routes: Routes = [
     path: '',
     component: HighSpeedManagementComponent,
     children: [
+      {path: 'high-speed-manage', component: HighSpeedManageComponent},
       {path: 'update-high-speed', component: UpdateHighSpeedComponent},
       {path: 'add-high-speed', component: AddHighSpeedComponent}
     ]

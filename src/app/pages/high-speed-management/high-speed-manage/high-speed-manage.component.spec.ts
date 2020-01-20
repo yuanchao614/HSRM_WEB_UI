@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UpdateLineComponent } from './update-line.component';
+import { HighSpeedManageComponent } from './high-speed-manage.component';
 
-describe('UpdateLineComponent', () => {
-  let component: UpdateLineComponent;
-  let fixture: ComponentFixture<UpdateLineComponent>;
+describe('HighSpeedManageComponent', () => {
+  let component: HighSpeedManageComponent;
+  let fixture: ComponentFixture<HighSpeedManageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UpdateLineComponent ]
+      declarations: [ HighSpeedManageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UpdateLineComponent);
+    fixture = TestBed.createComponent(HighSpeedManageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

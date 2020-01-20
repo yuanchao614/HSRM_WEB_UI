@@ -1,1 +1,96 @@
-<p>add-high-speed works!</p>
+<div class="body">
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+    <div class="content">
+      <div class="row">
+          <div class="col">
+            <div class="col-title">
+              <div class="title-name">新增列车</div>
+              <div class="title-operating">
+                  <div>
+                      <button nz-button class="headButton" (click)="addRail()">保存</button>
+                  </div>
+                  <div>
+                      <button nz-button class="headButton" style="margin-left: 20px;" (click)="back()">返回</button>
+                  </div>
+              </div>
+            </div>
+            <div class="col-body">
+                <div nz-row>
+                    <nz-form-item>
+                        <nz-form-label [nzSpan]="2">列车ID</nz-form-label>
+                        <nz-form-control [nzSpan]="6">
+                            <input nz-input placeholder="列车ID" formControlName="railId" style="width: 195px;"/>
+                        </nz-form-control>
+                        <nz-form-label [nzSpan]="2">列车编号</nz-form-label>
+                        <nz-form-control [nzSpan]="6">
+                            <input nz-input placeholder="列车编号" formControlName="railNum" style="width: 195px;"/>                           
+                        </nz-form-control>
+                        <nz-form-label [nzSpan]="2">列车型号</nz-form-label>
+                        <nz-form-control [nzSpan]="6">
+                                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="列车型号" formControlName="type" style="width: 195px;">
+                                        <nz-option nzLabel="L临时列车" nzValue="临时列车"></nz-option>
+                                        <nz-option nzLabel="K快速列车" nzValue="快速列车"></nz-option>
+                                        <nz-option nzLabel="T特快列车" nzValue="特快列车"></nz-option>
+                                        <nz-option nzLabel="Z直达特快列车" nzValue="直达特快列车"></nz-option>
+                                        <nz-option nzLabel="D动车" nzValue="动车"></nz-option>
+                                    </nz-select>
+                            <!-- <input nz-input placeholder="列车型号" formControlName="type" style="width: 195px;"/>                                                       -->
+                        </nz-form-control>
+                      </nz-form-item >
+              </div>
+              <div nz-row>
+                  <nz-form-item>
+                      <nz-form-label [nzSpan]="2">最高时速</nz-form-label>
+                      <nz-form-control [nzSpan]="6">
+                          <input nz-input placeholder="最高时速" formControlName="maxSpeed" style="width: 195px;"/>
+                      </nz-form-control>
+                      <nz-form-label [nzSpan]="2">车箱数</nz-form-label>
+                      <nz-form-control [nzSpan]="6">
+                          <input nz-input placeholder="车箱数" formControlName="carNum" style="width: 195px;"/>
+                      </nz-form-control>
+                      <nz-form-label [nzSpan]="2">座位数</nz-form-label>
+                      <nz-form-control [nzSpan]="6">
+                          <input nz-input placeholder="座位数" formControlName="siteNum" style="width: 195px;"/>
+                      </nz-form-control>
+                    </nz-form-item >
+            </div>
+            <div nz-row>
+                <nz-form-item>
+                    <nz-form-label [nzSpan]="2">电视</nz-form-label>
+                    <nz-form-control [nzSpan]="6">
+                            <nz-select nzShowSearch nzAllowClear nzPlaceHolder="电视" formControlName="tv" style="width: 195px;">
+                                    <nz-option nzLabel="有" nzValue="1"></nz-option>
+                                    <nz-option nzLabel="无" nzValue="0"></nz-option>
+                                </nz-select>
+                    </nz-form-control>
+                    <nz-form-label [nzSpan]="2">空调</nz-form-label>
+                    <nz-form-control [nzSpan]="6">
+                            <nz-select nzShowSearch nzAllowClear nzPlaceHolder="空调" formControlName="airc" style="width: 195px;">
+                                    <nz-option nzLabel="有" nzValue="1"></nz-option>
+                                    <nz-option nzLabel="无" nzValue="0"></nz-option>
+                                </nz-select>
+                    </nz-form-control>
+                    <nz-form-label [nzSpan]="2">充电</nz-form-label>
+                    <nz-form-control [nzSpan]="6">
+                            <nz-select nzShowSearch nzAllowClear nzPlaceHolder="充电" formControlName="charging" style="width: 195px;">
+                                    <nz-option nzLabel="有" nzValue="1"></nz-option>
+                                    <nz-option nzLabel="无" nzValue="0"></nz-option>
+                                </nz-select>
+                        <!-- <input nz-input placeholder="充电" formControlName="charging" style="width: 195px;"/> -->
+                    </nz-form-control>
+                  </nz-form-item >
+          </div>
+          <div nz-row>
+              <nz-form-item>
+                  <nz-form-label [nzSpan]="2">使用时间</nz-form-label>
+                      <nz-form-control nzSpan="6">
+                        <input nz-input placeholder="使用时间" formControlName="useTime" style="width: 195px;"/>                          
+                      </nz-form-control>
+              </nz-form-item >
+          </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    </form>
+  </div>

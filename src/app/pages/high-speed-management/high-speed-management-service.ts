@@ -10,7 +10,7 @@ import { Observable, of, Subject } from 'rxjs';
 @Injectable({
     providedIn: 'root'
 })
-export class LineManagementService {
+export class HighSpeedManagementService {
     // tslint:disable-next-line: variable-name
     // private apiUrl_custip_online = 'http://localhost:3000';
     constructor(
@@ -18,32 +18,25 @@ export class LineManagementService {
         private http: HttpClient
     ) { }
 
-    // getLine() {
-    //     return wsSend('getLine');
-    // }
-
-    // 请求不需要前面的IP地址因为在proxy里面已经配置会自动转发
-    // 获取全部线路信息
-    getLine(): Observable<any> {
-        const url = `/api/lineManagement/getLine`;
+    getHighSpeedRail(): Observable<any> {
+        const url = `/api/highSpeedRailManagement/getHighSpeedRail`;
         return this.http.get<any>(`${url}`);
     }
 
-    // 根据线路编号删除
-    deleteLineById(param): Observable<any> {
-        const url = `/api/lineManagement/deleteLineById`;
+    // 根据列车编号删除
+    deleteRailById(param): Observable<any> {
+        const url = `/api/highSpeedRailManagement/deleteRailById`;
         return this.http.get<any>(`${url}/?id=${param.id}`);
     }
 
-    // 新增高铁线路信息
-    addLine(param): Observable<any> {
-        const url = `/api/lineManagement/addLine`;
+    addRail(param): Observable<any> {
+        const url = `/api/highSpeedRailManagement/addRail`;
         return this.http.post<any>(`${url}`, param);
     }
 
-     // 新增高铁线路信息
-     updateLine(param): Observable<any> {
-        const url = `/api/lineManagement/updateLine`;
+     // 更新
+     updateRail(param): Observable<any> {
+        const url = `/api/highSpeedRailManagement/updateRail`;
         return this.http.post<any>(`${url}`, param);
     }
 

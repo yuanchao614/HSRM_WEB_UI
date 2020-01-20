@@ -1,7 +1,10 @@
-<div>
+<!-- <div>
   <div class="pageHeader">
     <form nz-form [formGroup]="validateForm" class="ant-advanced-search-form" (ngSubmit)="submitForm()">
       <div nz-row [nzGutter]="16">
+        <div nz-col [nzSpan]="2" style="font-size: 18px;line-height: 40px;">
+          客户管理模块
+        </div>
         <div nz-col [nzSpan]="5">
           <nz-form-item nzFlex>
             <nz-form-label>Role ID
@@ -11,12 +14,6 @@
                 <nz-option *ngFor="let option of roleNameList" [nzLabel]="option.label" [nzValue]="option.value">
                 </nz-option>
               </nz-select>
-              <!-- <input
-            nz-input
-            placeholder="placeholder"
-            formControlName="subSystem"
-            style='color:#000'
-          /> -->
             </nz-form-control>
           </nz-form-item>
         </div>
@@ -39,18 +36,10 @@
             </nz-form-control>
           </nz-form-item>
         </div>
-        <div nz-col [nzSpan]="2">
-            <nz-form-item nzFlex>
-                <nz-form-control>
-                    <button nz-button nzType="primary" nzShape="circle" (click)="refresh()"><i nz-icon [nzType]="'sync'"
-                      [nzSpin]="false"></i></button>
-              </nz-form-control>
-            </nz-form-item>
-          </div>
       </div>
     </form>
   </div>
-  <nz-table #basicTable nzBordered [nzData]="listOfData">
+  <nz-table #basicTable [nzData]="listOfData">
     <thead>
       <tr>
         <th *ngFor="let item of renderHeader; let i = index">
@@ -79,16 +68,72 @@
       <button nz-button nzType="danger" style="width: 100px;" (click)="deleteShowModal()">Delete User</button>
     </div>
   </div>
-</div>
+</div> -->
+
+<div class="deal-order">
+    <div class="body">
+        <div class="content">
+          <div class="row">
+              <div class="col">
+                <div class="col-title">
+                  <div class="title-name">用户管理模块</div>
+                  <div class="title-operating">
+                    <div>
+                        <button nz-button class="headButton">所有成员</button>
+                    </div>
+                    <div>
+                        <button nz-button  class="headButton" (click)="showModalMiddle()">新建</button>
+                    </div>
+                    <div>
+                        <button nz-button class="headButton" (click)="updatePassword()">修改/查看</button>
+                    </div>
+                    <div>
+                        <button nz-button class="headButton" (click)="deleteUser()">删除</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-body">
+                  <nz-table id="nzTable" #basicTable [nzData]="listOfData" [nzShowPagination]="true">
+                    <thead>
+                      <tr class="tableHead">
+                        <!-- <th nzWidth="0.5rem"><i class="circle grey"></i></th> -->
+                        <th nzWidth="1rem" nzAlign="left" *ngFor="let item of renderHeader">
+                            {{item.name}}
+                        </th>
+                        <th
+                        nzWidth="62px"
+                        nzShowCheckbox
+                        *ngIf="checkbox"
+                        [(nzChecked)]="allChecked"
+                        [nzIndeterminate]="indeterminate"
+                        (nzCheckedChange)="checkAll($event)"
+                      ></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let data of basicTable.data; let i = index;">
+                          <td>{{ data.user_id }}</td>
+                          <td>{{ data.role_id }}</td>
+                          <td>{{ data.username }}</td>
+                          <td>{{ data.realname }}</td>
+                          <td>{{ data.password }}</td>
+                          <td>{{ data.createTime }}</td>
+                          <td>{{ data.updateTime }}</td>
+                        <td nzShowCheckbox *ngIf="checkbox" [(nzChecked)]="data.checked" (nzCheckedChange)="refreshStatus()"></td>
+                        </tr>
+                    </tbody>
+                  </nz-table>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
 
 <ng-container>
   <app-add-user *ngIf="isVisibleMiddle" [isVisibleMiddle]="isVisibleMiddle" (closeModal)="closeModal()"></app-add-user>
 </ng-container>
 <ng-container>
-  <app-delete-user *ngIf="deleteIsVisible" [deleteIsVisible]="deleteIsVisible" [clickTrData]="clickTrData"
-    (deleteCloseModal)="deleteCloseModal()"></app-delete-user>
-</ng-container>
-<ng-container>
   <app-update-password *ngIf="updateIsVisble" [updateIsVisble]="updateIsVisble" [updateTrData]="updateTrData"
-    (closeModal)="updateCloseModal()"></app-update-password>
+    (closeModal)="closeModal()"></app-update-password>
 </ng-container>

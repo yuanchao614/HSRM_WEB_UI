@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   lineNum: any;
   chartOption: any;
   lineChartOption: any;
+  userChartOption: any;
   xLineValue = [];
   yLineKmValue = [];
   yLineMaxSpeed = [];
@@ -86,6 +87,7 @@ export class HomeComponent implements OnInit {
     this.getData();
     setTimeout(() => {
       this.getLineChart();
+      this.getUserChart();
     }, 1000);
     // this.getLineChart();
   }
@@ -111,22 +113,80 @@ export class HomeComponent implements OnInit {
     this.chartOption = this.option;
   }
 
+  getUserChart() {
+    this.homeService.getUser().subscribe(r => { // 获取用户数量
+      console.log(r);
+      const res: any = r;
+      const xUserValue = [];
+      const yUserValue = [];
+      const resData = res.data.result;
+      resData.forEach(item => {
+        if (!item.active) {
+          item.active = 0;
+        }
+        xUserValue.push(item.username);
+        yUserValue.push(item.active);
+      });
+      this.userChartOption = {
+        tooltip: {
+          trigger: 'axis'
+        },
+        legend: {
+          data: ['在线/离线']
+        },
+        grid: {
+          left: '3%',
+          right: '4%',
+          bottom: '3%',
+          containLabel: true
+        },
+        toolbox: {
+          feature: {
+            saveAsImage: {}
+          }
+        },
+        xAxis: {
+          type: 'category',
+          name: '系统用户',
+          position: 'bottom',
+          nameLocation: 'middle',
+          nameTextStyle: {
+            fontWeight: 'bold',
+            fontSize: 12,
+            lineHeight: 22
+          },
+          boundaryGap: true, // 横坐标是否从0开始
+          data: xUserValue
+        },
+        yAxis: {
+          name: '在线状态',
+          minInterval: 1,
+          nameTextStyle: {
+            fontWeight: 'bold',
+            fontSize: 12,
+            lineHeight: 22
+          },
+          type: 'value'
+        },
+        series: [
+          {
+            name: '在线/离线',
+            type: 'line',
+            stack: '总量',
+            label: {
+              normal: {
+                show: true,
+                position: 'top'
+              }
+            },
+            data: yUserValue
+          }
+        ]
+      };
+      console.log(this.userChartOption);
+    });
+  }
   getLineChart() {
-    // app.title = '折柱混合';
-    // this.xLineValue = [];
-    // this.yLineKmValue = [];
-    // this.yLineMaxSpeed = [];
-    // this.homeService.getLine().subscribe(r => {
-    //   console.log(r);
-    //   const res: any = r;
-    //   const resData = res.data.result;
-    //   this.lineNum = res.data.result.length;
-    //   resData.forEach(item => {
-    //     this.xLineValue.push(item.line_num);
-    //     this.yLineKmValue.push(item.km);
-    //     this.yLineMaxSpeed.push(item.max_speed);
-    //   });
-    // });
     console.log(this.xLineValue);
     this.lineChartOption = {
       tooltip: {
@@ -154,6 +214,11 @@ export class HomeComponent implements OnInit {
           type: 'category',
           name: 'High-speed Line Num',
           nameLocation: 'middle',
+          nameTextStyle: {
+            fontWeight: 'bold',
+            fontSize: 12,
+            lineHeight: 22
+          },
           data: this.xLineValue,
           axisPointer: {
             type: 'shadow'
@@ -164,6 +229,10 @@ export class HomeComponent implements OnInit {
         {
           type: 'value',
           name: 'km',
+          nameTextStyle: {
+            fontWeight: 'bold',
+            fontSize: 12
+          },
           min: 0,
           interval: 100,
           axisLabel: {

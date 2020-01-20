@@ -1,39 +1,23 @@
-<!-- <div>
-        <div class="pageHeader">
-          <div nz-row>
-            <div nz-col nzSpan="2" style="font-size: 18px;line-height: 40px;">用户操作日志</div>
-          </div>
-        </div>
-        <nz-table #basicTable [nzData]="listOfData">
-          <thead>
-            <tr>
-              <th *ngFor="let item of renderHeader; let i = index">
-                {{item.name}}
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let data of basicTable.data; let i = index">
-              <td>{{ i + 1 }}</td>
-              <td>{{ data.operator_name }}</td>
-              <td>{{ data.operator_data }}</td>
-              <td>{{ data.operator_type }}</td>
-              <td>{{ data.operator_time }}</td>
-            </tr>
-          </tbody>
-        </nz-table>
-      </div> -->
-      
+
 <div class="deal-order">
     <div class="body">
         <div class="content">
           <div class="row">
               <div class="col">
                 <div class="col-title">
-                  <div class="title-name">用户操作日志</div>
+                  <div class="title-name">高铁信息管理模块</div>
                   <div class="title-operating">
                     <div>
-                        <button nz-button class="headButton" (click)="deleteOperator()">删除</button>
+                        <button nz-button class="headButton">所有成员</button>
+                    </div>
+                    <div>
+                        <button nz-button  class="headButton" (click)="addHighSpeedRail()">新建</button>
+                    </div>
+                    <div>
+                        <button nz-button class="headButton" (click)="goEditView()">修改/查看</button>
+                    </div>
+                    <div>
+                        <button nz-button class="headButton" (click)="deleteRailById()">删除</button>
                     </div>
                   </div>
                 </div>
@@ -43,9 +27,7 @@
                       <tr class="tableHead">
                         <!-- <th nzWidth="0.5rem"><i class="circle grey"></i></th> -->
                         <th nzWidth="1rem" nzAlign="left" *ngFor="let item of renderHeader">
-                          
                             {{item.name}}
-                         
                         </th>
                         <th
                         nzWidth="62px"
@@ -59,12 +41,19 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let data of basicTable.data; let i = index;">
-                          <td>{{ data.operator_id }}</td>
-                          <td>{{ data.operator_name }}</td>
-                          <td>{{ data.operator_data }}</td>
-                          <td>{{ data.operator_type }}</td>
-                          <td>{{ data.operator_module }}</td>
-                          <td>{{ data.operator_time }}</td>
+                         <td>{{data.hs_carId}}</td>
+                         <td>{{data.hs_type}}</td>
+                         <td>{{data.use_time}}</td>
+                         <td>{{data.createTime}}</td>
+                         <td>{{data.updateTime ? data.updateTime : data.createTime}}</td>
+                         <td>{{data.max_speed + 'Km/h'}}</td>
+                         <td>{{data.hs_numCar + '节'}}</td>
+                         <td>{{data.site_num + '座'}}</td>
+                         <td>{{data.has_tv === 1 ? '有' : '无'}}</td>
+            
+                         <td>{{data.has_airc === 1 ? '有' : '无'}}</td>
+                        
+                         <td>{{data.charging === 1 ? '有' : '无'}}</td>
                         <td nzShowCheckbox *ngIf="checkbox" [(nzChecked)]="data.checked" (nzCheckedChange)="refreshStatus()"></td>
                         </tr>
                     </tbody>
