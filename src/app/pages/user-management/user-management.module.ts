@@ -6,7 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UserProleComponent } from './user-prole/user-prole.component';
 import { AddUserComponent } from './user-prole/add-user/add-user.component';
-import { DeleteUserComponent } from './user-prole/delete-user/delete-user.component';
+// import { DeleteUserComponent } from './user-prole/delete-user/delete-user.component';
 import { UpdatePasswordComponent } from './user-prole/update-password/update-password.component';
 import { OperatorRecordComponent } from './operator-record/operator-record.component';
 
@@ -16,7 +16,7 @@ const COMPONENT = [
   UserManagementComponent,
     UserProleComponent,
     AddUserComponent,
-    DeleteUserComponent,
+    // DeleteUserComponent,
     UpdatePasswordComponent,
     OperatorRecordComponent
 ];
