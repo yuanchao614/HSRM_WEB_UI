@@ -1,28 +1,24 @@
 <nz-layout class="app-layout">
-        <nz-sider class="menu-sidebar"
-                  nzCollapsible
-                  nzWidth="256px"
-                  nzBreakpoint="md"
-                  [(nzCollapsed)]="isCollapsed"
-                  [nzTrigger]="null">
-          <div class="sidebar-logo">
-            <a href="https://ng.ant.design/" target="_blank">
-              <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
-              <h1>HSRM</h1>
-            </a>
-          </div>
-          <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-            <li nz-submenu nzOpen nzTitle="Home Page" nzIcon="dashboard">
-              <ul>
-                <li nz-menu-item nzMatchRouter>
-                  <a routerLink="/emas/welcome/home">Home Page</a>
-                </li>
-                <li nz-menu-item nzMatchRouter>
+  <nz-sider class="menu-sidebar" nzCollapsible nzWidth="256px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null">
+    <div class="sidebar-logo">
+      <a href="https://ng.ant.design/" target="_blank">
+        <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
+        <h1>HSRM</h1>
+      </a>
+    </div>
+    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <li nz-submenu [nzOpen]="item.isOpen" [nzTitle]="item.title" [nzIcon]="item.icon" *ngFor="let item of menuList;">
+        <ul>
+          <li nz-menu-item nzMatchRouter *ngFor="let data of item.route">
+            <a [routerLink]="data.childRoute">{{ data.name }}</a>
+          </li>
+          <!-- <li nz-menu-item nzMatchRouter>
                   <a routerLink="/emas/welcome/monitor">monitor</a>
-                </li>
-              </ul>
-            </li>
-            <li nz-submenu nzClose nzTitle="Line Management" nzIcon="form">
+                </li> -->
+        </ul>
+      </li>
+      <!-- <li nz-submenu nzClose nzTitle="Line Management" nzIcon="form">
               <ul>
                 <li nz-menu-item nzMatchRouter>
                     <a routerLink="/emas/line-management/update-line">High-Speed line</a>
@@ -61,29 +57,26 @@
                     <a routerLink="/emas/user-management/operator">Operator Log</a>
                     </li>
                   </ul>
-            </li>
-          </ul>
-        </nz-sider>
-        <nz-layout>
-          <nz-header>
-            <div class="app-header">
-              <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
-                  <i class="trigger"
-                     nz-icon
-                     [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
-                  ></i>
-              </span>
-              <div style="float: right;">
-                <span>{{systemService.time.date}} {{systemService.time.time}}</span>
-                <button nz-button nzType="link" (click)="logOut()" style="margin-right: 9px;"><i nz-icon nzType="logout" nzTheme="outline"></i>login out</button> 
-              </div>     
-            </div>
-          </nz-header>
-          <nz-content>
-            <div class="inner-content">
-              <router-outlet></router-outlet>
-            </div>
-          </nz-content>
-        </nz-layout>
-      </nz-layout>
-      
+            </li> -->
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <div class="app-header">
+        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+          <i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
+        </span>
+        <div style="float: right;">
+          <span>{{systemService.time.date}} {{systemService.time.time}}</span>
+          <button nz-button nzType="link" (click)="logOut()" style="margin-right: 9px;"><i nz-icon nzType="logout"
+              nzTheme="outline"></i>login out</button>
+        </div>
+      </div>
+    </nz-header>
+    <nz-content>
+        <div class="inner-content">
+          <router-outlet></router-outlet>
+        </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

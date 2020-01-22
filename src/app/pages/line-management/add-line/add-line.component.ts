@@ -80,7 +80,7 @@ export class AddLineComponent implements OnInit {
   }
 
   back() {
-    this.router.navigate(['/emas/line-management/update-line']);
+    this.router.navigate(['/emas/line-management/line-manage']);
   }
 
 }

@@ -1,0 +1,147 @@
+.board-container {
+	position: relative;
+	overflow: hidden;
+	height: 80px;
+}
+
+.board-wrapper {
+	display: flex;
+	/* flex-wrap: nowrap; */
+	background: black;
+	border-radius: 15px;
+	padding: 0 10px;
+	justify-content: space-around;
+	align-items: center;
+	width: 14%;
+}
+
+.board-wrapper-user {
+	display: flex;
+	/* flex-wrap: nowrap; */
+	background: black;
+	;
+	border-radius: 15px;
+	padding: 0 10px;
+	/* justify-content: space-around; */
+	align-items: center;
+	width: 16%;
+}
+
+.board-container {
+	display: flex;
+	justify-content: space-around;
+}
+
+.board-container ul {
+	display: flex;
+	justify-content: space-around;
+
+}
+
+.board-container ul li {
+	list-style: none;
+	/* float: left; */
+	/* width: 208px; */
+}
+
+.board-wrapper .pic {
+	/* width: 26px;
+	height: 26px; */
+	font-size: 20px;
+	/* background-color: red; */
+	/* margin-right: 10px; */
+}
+
+.board-wrapper-user .pic {
+	/* width: 26px;
+	height: 26px; */
+	font-size: 20px;
+	/* background-color: red; */
+	/* margin-right: 10px; */
+}
+
+.board-wrapper h4 {
+	font-size: 18px;
+	font-family: Adobe Heiti Std;
+	font-weight: normal;
+	color: rgba(255, 255, 255, 1);
+	line-height: 60px;
+	min-width: 100px;
+}
+
+.up-text {
+	color: white;
+	font-size: 18px;
+}
+
+.down-text {
+	font-size: 11px;
+}
+
+.down-text i {
+	font-size: 10px;
+	vertical-align: baseline;
+	margin-right: 6px;
+}
+
+.board-wrapper-content {
+	background: black;
+	border-radius: 15px;
+	padding: 0 10px;
+	width: 18%;
+	height: 80px;
+	display: flex;
+	justify-content: space-around;
+}
+
+.board-wrapper-notice {
+	background: black;
+	border-radius: 15px;
+	padding: 0 10px;
+	width: 90%;
+	height: 80px;
+	display: flex;
+	/* justify-content: space-around; */
+	align-items: center;
+}
+
+.dropMenu {
+	background: #364d79;
+}
+
+.dropMenu li a {
+	color: white;
+}
+
+.dropMenu li:hover {
+	background-color: #1890ff;
+}
+
+.aaa {
+	text-align: center;
+	height: 160px;
+	line-height: 160px;
+	background: #364d79;
+	color: #fff;
+	overflow: hidden;
+}
+
+::ng-deep .ant-carousel .slick-list .slick-slide.slick-active {
+	/* width: 49%; */
+	height: 79px;
+	display: flex;
+	/* justify-content: space-around; */
+	justify-content: space-evenly;
+	width: 100%;
+}
+
+
+::ng-deep .ant-carousel .slick-vertical .slick-slide {
+	display: flex;
+	justify-content: space-evenly;
+	width: 100%;
+}
+
+::ng-deep .nz-carousel-content {
+	width: 100%;
+}
