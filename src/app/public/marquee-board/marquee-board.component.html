@@ -1,0 +1,175 @@
+<!-- <div class="board-container">
+	<ul>
+		<li *ngFor="let item of boardList">
+			<div class="board-wrapper">
+				<i class="pic"></i>
+				<h4>{{item.name}}</h4>
+				<div>
+					<p class="up-text">{{item.number}}</p>
+					<p class="down-text"><i nz-icon nzType="arrow-up" nzTheme="outline"></i>{{item.status}}</p>
+				</div>
+			</div>
+		</li>
+	</ul>
+</div> -->
+
+<!-- <nz-carousel nzDotPosition="dotPosition" [nzDots]="false" >
+	<div nz-carousel-content *ngFor="let arg of boardList">
+		<div class="board-container" >
+			<ul>
+				<li *ngFor="let item of arg.arr">
+					<div class="board-wrapper">
+						<i class="pic"></i>
+						<h4>{{item.name}}</h4>
+						<div>
+							<p class="up-text">{{item.number}}</p>
+							<p class="down-text"><i nz-icon nzType="arrow-up" nzTheme="outline"></i>{{item.status}}</p>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nz-carousel> -->
+<div style="margin: 20px 20px;">
+	<div class="board-container">
+		<div class="board-wrapper">
+			<!-- <i class="pic iconfont icon-weizhi"></i> -->
+			<i nz-icon nzType="global" nzTheme="outline" style="width: 8%;font-size: 26px;text-align: center;color: white;"></i>
+			<div style="display: flex;flex-direction: column;">
+				<marquee scrollamount="5" scrolldelay="90" style="max-width: 100px;">
+					<div style="font-size: 20px;color: white;">{{newMarqueeContent}}</div>
+				</marquee>
+				<!-- <div style="font-size: 20px;">Jurong East</div> -->
+			<div style="font-size: 16px;color: white;">{{locationCity}}</div>
+			</div>
+		</div>
+		<!-- carousel -->
+		<nz-carousel nzVertical [nzDots]='false' [nzAutoPlaySpeed]='3500'
+		 class="carousel" id="carousel" [nzAutoPlay]='autoPlay' *ngIf="!notice"
+		 (mouseover)='over()' (mouseout)="out()" style="cursor: default;" [nzEnableSwipe]='false'>
+			<div nz-carousel-content style="height: 79px;">
+				<div class="board-wrapper-content">
+					<div style="font-size: 28px;padding-top: 15px;color:white;">{{rollingBarData[0].majorData[0].line}}</div>
+					<div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
+						<p class="up-text">Line Management</p>
+						<p class="down-text" style="margin-left: 30px;color: #8BDC17;"><i nz-icon nzType="arrow-up"
+								nzTheme="outline"></i>15%</p>
+					</div>
+				</div>
+				<div class="board-wrapper-content">
+					<div style="font-size: 28px;padding-top: 15px;color:white;">{{rollingBarData[0].majorData[1].rail}}</div>
+					<div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
+						<p class="up-text">Rail Management</p>
+						<p class="down-text" style="margin-left: 30px;color: #8BDC17;"><i nz-icon nzType="arrow-up"
+								nzTheme="outline"></i>10%</p>
+					</div>
+				</div>
+				<div class="board-wrapper-content">
+					<div style="font-size: 28px;padding-top: 15px;color:white;">{{rollingBarData[0].majorData[2].ticket}}</div>
+					<div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
+						<p class="up-text">Ticket Management</p>
+						<p class="down-text" style="margin-left: 30px;color: #8BDC17;"><i nz-icon nzType="arrow-up"
+								nzTheme="outline"></i>9%</p>
+					</div>
+				</div>
+				<div class="board-wrapper-content">
+					<div style="font-size: 28px;padding-top: 15px;color:white;">{{rollingBarData[0].majorData[3].user}}</div>
+					<div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
+						<p class="up-text">User ManageMent</p>
+						<p class="down-text" style="margin-left: 30px;color: #8BDC17;"><i nz-icon nzType="arrow-up"
+								nzTheme="outline"></i>20%</p>
+					</div>
+				</div>
+			</div>
+			<div nz-carousel-content style="height: 80px;">
+				<div class="board-wrapper-content">
+					<div style="font-size: 28px;padding-top: 15px;color:white;">{{rollingBarData[1].liftData[0].tempreture + '℃'}}</div>
+					<div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
+						<p class="up-text">Tempreture</p>
+						<p class="down-text" style="margin-left: 30px;color: red;"><i nz-icon nzType="arrow-down"
+								nzTheme="outline"></i>3.32</p>
+					</div>
+				</div>
+				<div class="board-wrapper-content">
+					<div style="font-size: 28px;padding-top: 15px;color:white;">{{rollingBarData[1].liftData[1].weather}}</div>
+					<div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
+						<p class="up-text">Weather</p>
+						<p class="down-text" style="margin-left: 30px;color: red;"><i nz-icon nzType="arrow-down"
+								nzTheme="outline"></i>3.32</p>
+					</div>
+				</div>
+				<div class="board-wrapper-content">
+					<div style="font-size: 28px;padding-top: 15px;color:white;">{{rollingBarData[1].liftData[2].humidity + '%RH'}}</div>
+					<div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
+						<p class="up-text">Humidity</p>
+						<p class="down-text" style="margin-left: 30px;color: red;"><i nz-icon nzType="arrow-down"
+								nzTheme="outline"></i>3.32</p>
+					</div>
+				</div>
+				<div class="board-wrapper-content">
+					<div style="font-size: 28px;padding-top: 15px;color:white;">{{rollingBarData[1].liftData[3].windPower}}</div>
+					<div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
+						<p class="up-text">windPower</p>
+						<p class="down-text" style="margin-left: 30px;color: red;"><i nz-icon nzType="arrow-down"
+								nzTheme="outline"></i>3.32</p>
+					</div>
+				</div>
+			</div>
+			<div nz-carousel-content  style="height: 80px;">
+				<div class="board-wrapper-notice">
+					<i nz-icon nzType="warning" nzTheme="outline" style="width: 8%;font-size: 26px;text-align: center;color: red;"></i>
+					<div style="width: 8%;font-size: 17px;text-align: center; color: red;">Warning</div>
+					<div style="width: 4%;font-size: 17px;text-align: center;color: red;">|</div>
+					<div style="color: red;">{{noticeContent}}</div>
+				</div>
+			</div>
+			<div nz-carousel-content  style="height: 80px;">
+				<div class="board-wrapper-notice">
+					<!-- <i class="iconfont icon-notice" style="width: 8%;font-size: 26px;text-align: center;color: red;"></i> -->
+					<i nz-icon nzType="notification" nzTheme="outline" style="width: 8%;font-size: 26px;text-align: center;color: red;"></i>
+					<div style="width: 8%;font-size: 17px;text-align: center;color: red;">Notice</div>
+					<div style="width: 4%;font-size: 17px;text-align: center;color: red;">|</div>
+					<div style="color: red;">{{noticeContent}}</div>
+				</div>
+			</div>
+		</nz-carousel>
+		<!-- notice -->
+		<div *ngIf="notice" class="board-wrapper-notice">
+			<!-- <i *ngIf="!warning" class="iconfont icon-notice" style="width: 8%;font-size: 26px;text-align: center;color: red;"></i> -->
+			<i nz-icon nzType="notification" nzTheme="outline" style="width: 8%;font-size: 26px;text-align: center;color: red;"></i>
+			<div *ngIf="!warning" style="width: 8%;font-size: 17px;text-align: center;color: red;">Notice</div>
+			<i *ngIf="warning" class="iconfont icon-notice"
+				style="width: 8%;font-size: 26px;text-align: center; color: red;"></i>
+			<div *ngIf="warning" style="width: 8%;font-size: 17px;text-align: center; color: red;">Warning</div>
+			<div style="width: 4%;font-size: 17px;text-align: center;color: red;">|</div>
+			<div style="color: red;">{{noticeContent}}</div>
+		</div>
+		<!-- user -->
+		<div class="board-wrapper-user">
+			<!-- <i (click)="bell()" class="pic iconfont icon-bell" style="margin-right: 10px;transform: rotate(20deg);cursor: pointer;"></i> -->
+			<!-- <i (click)="setting()" class="pic iconfont icon-shezhi" style="margin-right: 10px;color: white;cursor: pointer;"></i> -->
+			<!-- <i class="pic iconfont icon-gerenzhongxinwoderenwubiaozhuntoumianxing1"
+				style="margin-right: 10px;font-size:38px"></i> -->
+				<span style="width: 40px;height: 40px; display: block;margin-right: 10px;"><img  style="width: 40px;height: 40px;" src="../../../assets/image/headshot.jpg" alt=""></span>
+			<div>
+				<div class="up-text text-ellipsis" style="max-width:100px;font-size:18px">{{userName}}</div>
+				<p class="down-text" style="font-size: 14px;color: white;">{{role}}</p>
+			</div>
+			<nz-dropdown nzPlacement="bottomCenter">
+				<a nz-dropdown><i nz-icon nzType="caret-down" nzTheme="outline" style="width: 8%;font-size: 26px;text-align: center;color: white;"></i></a>
+				<ul nz-menu nzSelectable class="dropMenu">
+					<li nz-menu-item>
+						<a (click)="changePwd()">Change password</a>
+						<!-- (click)="isChangePwVisible = !isChangePwVisible" -->
+					</li>
+					<li nz-menu-item>
+						<a (click)="logOut()">Logout</a>
+					</li>
+				</ul>
+			</nz-dropdown>
+		</div>
+	</div>
+</div>
+<div id="container"></div>
+<!-- <sj-change-pwd></sj-change-pwd> -->

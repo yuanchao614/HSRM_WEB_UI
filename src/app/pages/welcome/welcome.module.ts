@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import { PublicComModule } from '../../public/public-com.module';
+
 
 // import { WelcomeRoutingModule } from './welcome-routing.module';
 
@@ -31,7 +33,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  imports: [ CommonModule, NgZorroAntdModule, RouterModule.forChild(routes), NgxEchartsModule],
+  imports: [ CommonModule, NgZorroAntdModule, PublicComModule, RouterModule.forChild(routes), NgxEchartsModule],
   declarations: [WelcomeComponent, HomeComponent, MonitorComponent],
 })
 export class WelcomeModule { }

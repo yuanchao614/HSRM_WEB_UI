@@ -21,7 +21,7 @@ const routes: Routes = [
     path: '',
     component: LineManagementComponent,
     children: [
-      {path: 'update-line', component: LineManageComponent},
+      {path: 'line-manage', component: LineManageComponent},
       {path: 'add-line', component: AddLineComponent},
       {path: 'edit-line', component: EditViewComponent}
     //   {path: 'monitor', component: MonitorComponent}

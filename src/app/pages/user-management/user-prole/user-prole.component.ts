@@ -53,6 +53,12 @@ export class UserProleComponent implements OnInit {
       key: null,
       value: 'update_time',
       isChecked: true
+    },
+    {
+      name: '头像',
+      key: null,
+      value: 'avctor',
+      isChecked: true
     }
   ];
   validateForm: FormGroup;
@@ -61,6 +67,7 @@ export class UserProleComponent implements OnInit {
   isVisibleMiddle = false;
   deleteIsVisible = false;
   updateIsVisble = false;
+  uploadAvctorIsVisible = false;
    // checkbox
    allChecked = false;
    indeterminate = false;
@@ -101,7 +108,7 @@ export class UserProleComponent implements OnInit {
     this.userService.getUser().subscribe((r) => {
       console.log(r);
       const res: any = r;
-      if (res.code === 0) {
+      if (res.code === 1001) {
         this.message.create('success', `Data request successed`);
         const resData = res.data.result;
         resData.forEach(item => {
@@ -118,6 +125,21 @@ export class UserProleComponent implements OnInit {
 
   showModalMiddle(): void {
     this.isVisibleMiddle = true;
+  }
+
+  showUploadImg() {
+    const clickTr = [];
+    this.listOfData.forEach(item => {
+      if (item.checked) {
+        clickTr.push(item);
+      }
+    });
+    if (clickTr.length === 1) {
+      this.clickTrData = clickTr[0];
+      this.uploadAvctorIsVisible = true;
+    } else {
+      this.message.create('warning', `请选中一条数据!`);
+    }
   }
 
   deleteUser() {
@@ -171,6 +193,7 @@ export class UserProleComponent implements OnInit {
     this.isVisibleMiddle = false;
     this.updateIsVisble = false;
     this.deleteIsVisible = false;
+    this.uploadAvctorIsVisible = false;
     setTimeout(() => {
       this.getData();
     }, 500);

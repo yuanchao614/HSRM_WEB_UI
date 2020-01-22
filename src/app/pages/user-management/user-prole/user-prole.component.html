@@ -1,74 +1,3 @@
-<!-- <div>
-  <div class="pageHeader">
-    <form nz-form [formGroup]="validateForm" class="ant-advanced-search-form" (ngSubmit)="submitForm()">
-      <div nz-row [nzGutter]="16">
-        <div nz-col [nzSpan]="2" style="font-size: 18px;line-height: 40px;">
-          客户管理模块
-        </div>
-        <div nz-col [nzSpan]="5">
-          <nz-form-item nzFlex>
-            <nz-form-label>Role ID
-            </nz-form-label>
-            <nz-form-control>
-              <nz-select style="width: 150px;" nzShowSearch nzAllowClear nzPlaceHolder="" formControlName="roleName">
-                <nz-option *ngFor="let option of roleNameList" [nzLabel]="option.label" [nzValue]="option.value">
-                </nz-option>
-              </nz-select>
-            </nz-form-control>
-          </nz-form-item>
-        </div>
-        <div nz-col [nzSpan]="5">
-          <nz-form-item nzFlex>
-            <nz-form-label>User Name
-            </nz-form-label>
-            <nz-form-control>
-              <nz-select style="width: 150px;" nzShowSearch nzAllowClear nzPlaceHolder="" formControlName="userName">
-                <nz-option *ngFor="let option of userNameList" [nzLabel]="option.label" [nzValue]="option.value">
-                </nz-option>
-              </nz-select>
-            </nz-form-control>
-          </nz-form-item>
-        </div>
-        <div nz-col [nzSpan]="2">
-          <nz-form-item nzFlex>
-              <nz-form-control>
-            <button nz-button nzType="primary">Search</button>
-            </nz-form-control>
-          </nz-form-item>
-        </div>
-      </div>
-    </form>
-  </div>
-  <nz-table #basicTable [nzData]="listOfData">
-    <thead>
-      <tr>
-        <th *ngFor="let item of renderHeader; let i = index">
-          {{item.name}}
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let data of basicTable.data; let i = index" (click)="clickTr(data)" (dblclick)="updateShowModal(data)"
-        [ngClass]="{'active': clickTrData.username == data.username}">
-        <td>{{ data.user_id }}</td>
-        <td>{{ data.role_name }}</td>
-        <td>{{ data.username }}</td>
-        <td>{{ data.realname }}</td>
-        <td>{{ data.password }}</td>
-        <td>{{ data.createTime }}</td>
-        <td>{{ data.updateTime }}</td>
-      </tr>
-    </tbody>
-  </nz-table>
-  <div nz-row>
-    <div nz-col nzSpan="3">
-      <button nz-button nzType="primary" style="width: 100px;" (click)="showModalMiddle()">Add User</button>
-    </div>
-    <div nz-col nzSpan="3">
-      <button nz-button nzType="danger" style="width: 100px;" (click)="deleteShowModal()">Delete User</button>
-    </div>
-  </div>
-</div> -->
 
 <div class="deal-order">
     <div class="body">
@@ -86,6 +15,9 @@
                     </div>
                     <div>
                         <button nz-button class="headButton" (click)="updatePassword()">修改/查看</button>
+                    </div>
+                    <div>
+                        <button nz-button class="headButton" (click)="showUploadImg()">上传/修改头像</button>
                     </div>
                     <div>
                         <button nz-button class="headButton" (click)="deleteUser()">删除</button>
@@ -119,6 +51,9 @@
                           <td>{{ data.password }}</td>
                           <td>{{ data.createTime }}</td>
                           <td>{{ data.updateTime }}</td>
+                          <td>
+                            <img [src]="'data:image/png;base64,' + data.avatar" alt="" style="max-height: 30px;max-width: 30px;">
+                          </td>
                         <td nzShowCheckbox *ngIf="checkbox" [(nzChecked)]="data.checked" (nzCheckedChange)="refreshStatus()"></td>
                         </tr>
                     </tbody>
@@ -137,3 +72,4 @@
   <app-update-password *ngIf="updateIsVisble" [updateIsVisble]="updateIsVisble" [updateTrData]="updateTrData"
     (closeModal)="closeModal()"></app-update-password>
 </ng-container>
+<app-upload-avctor *ngIf="uploadAvctorIsVisible" [uploadAvctorIsVisible]="uploadAvctorIsVisible" [clickTrData]="clickTrData" (closeModal)="closeModal()"></app-upload-avctor>

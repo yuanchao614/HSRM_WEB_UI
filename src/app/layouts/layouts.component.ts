@@ -12,6 +12,7 @@ import { LayoutsService } from './layouts.service';
 export class LayoutsComponent implements OnInit {
   time: any;
   userName: any;
+  menuList = [];
 
   constructor(
     private router: Router,
@@ -21,10 +22,98 @@ export class LayoutsComponent implements OnInit {
     // 设置时间
     this.systemService.timeSet();
     console.log(this.systemService.time);
+    this.menuList = [
+      {
+        id: this.isGuid(8),
+        title: 'Home Page',
+        icon: 'dashboard',
+        active: true,
+        isOpen: true,
+        route: [
+          {
+            childRoute: '/emas/welcome/home',
+            name: 'Home Page'
+          },
+          {
+            childRoute: '/emas/welcome/monitor',
+            name: 'monitor'
+          }
+        ]
+      },
+      {
+        id: this.isGuid(8),
+        title: 'Line Management',
+        icon: 'form',
+        active: false,
+        isOpen: false,
+        route: [
+          {
+            childRoute: '/emas/line-management/line-manage',
+            name: 'High-Speed line'
+          },
+          {
+            childRoute: '/emas/line-management/add-line',
+            name: 'Add New Line'
+          }
+        ]
+      },
+      {
+        id: this.isGuid(8),
+        title: 'Rail Management',
+        icon: 'dashboard',
+        active: false,
+        isOpen: false,
+        route: [
+          {
+            childRoute: '/emas/high-speed-management/high-speed-manage',
+            name: 'High-Speed Rail'
+          },
+          {
+            childRoute: '/emas/high-speed-management/add-high-speed',
+            name: 'Add High-Speed Rail'
+          }
+        ]
+      },
+      {
+        id: this.isGuid(8),
+        title: 'ticket Management',
+        icon: 'transaction',
+        active: false,
+        isOpen: false,
+        route: [
+          {
+            childRoute: '/emas/ticket-management/update-ticket',
+            name: 'High-Speed Ticket'
+          },
+          {
+            childRoute: '/emas/ticket-management/add-ticket',
+            name: 'Add Ticket'
+          }
+        ]
+      },
+      {
+        id: this.isGuid(8),
+        title: 'User Management',
+        icon: 'user',
+        active: false,
+        isOpen: false,
+        route: [
+          {
+            childRoute: '/emas/user-management/user-prole',
+            name: 'User Prole'
+          },
+          {
+            childRoute: '/emas/user-management/operator',
+            name: 'Operator Log'
+          }
+        ]
+      }
+    ];
   }
 
   ngOnInit() {
-    // this.getUserName();
+    // this.initMap();
+    // this.showCityInfo();
   }
 
 
@@ -45,5 +134,17 @@ export class LayoutsComponent implements OnInit {
     localStorage.removeItem('access_token');
     this.router.navigate(['/login']);
   }
+
+
+  isGuid(size: number): string {
+    let guid = '';
+    for (let i = 1; i <= size; i++) {
+      const n = Math.floor(Math.random() * 16.0).toString(16);
+      guid += n;
+    }
+    return guid;
+  }
+
+
 
 }

@@ -18,7 +18,7 @@ export class OperatorRecordComponent implements OnInit {
   clickTrData: any;
   renderHeader = [
     {
-      name: '操作人ID',
+      name: '操作ID',
       key: null,
       value: 'operator_id',
       isChecked: true

@@ -64,4 +64,9 @@ export class UserService {
         const url = `/api/user/deleOperator`;
         return this.http.get<any>(`${url}?id=${param.id}`);
     }
+
+    uploadImg(param): Observable<any> {
+        const url = `/api/user/uploadImg`;
+        return this.http.post<any>(`${url}`, param);
+    }
 }

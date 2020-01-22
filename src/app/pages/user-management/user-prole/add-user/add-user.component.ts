@@ -13,6 +13,13 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 export class AddUserComponent implements OnInit {
   @Input() isVisibleMiddle: boolean;
   @Output() closeModal = new EventEmitter();
+  imgData = {
+    name: null,
+    width: null,
+    height: null,
+    url: null,
+    base64url: null
+};
 
   validateForm: FormGroup;
 
@@ -84,6 +91,24 @@ export class AddUserComponent implements OnInit {
       }
     });
   }
+
+  getBase64(file: File) {
+    const reader = new FileReader();
+    reader.addEventListener('load', () => {
+      const base64Str = reader.result.toString();
+      this.imgData.base64url = base64Str.split('base64,')[1]; //获取上传图片的base64码
+      // this.selectItem.graphicContents = this.imgData.base64url;
+      // console.log(this.imgData.base64url);
+    });
+    reader.readAsDataURL(file);
+}
+
+beforeUpload(e) {
+  const file = e.srcElement.files[0]; // 获取上传图片的file对象
+  this.getBase64(file);
+  // console.log(file);
+  // this.checkImageSize(file);
+}
 
   operatorLog() {
     // tslint:disable-next-line: variable-name

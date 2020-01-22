@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from '../home.service';
+declare let AMap: any;
+
 
 @Component({
   selector: 'app-home',
@@ -85,6 +87,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.getData();
+    // this.initMap();
     setTimeout(() => {
       this.getLineChart();
       this.getUserChart();
@@ -264,6 +267,14 @@ export class HomeComponent implements OnInit {
       ]
     };
     console.log(this.lineChartOption);
+  }
+
+  initMap() {
+    const map = new AMap.Map('mapcontainer', {
+      mapStyle: 'amap://styles/e605a8b70ea77a69409e91d84883e866', // 设置地图的显示样式
+      zoom: 1
+  });
+    console.log(map);
   }
 
 }
