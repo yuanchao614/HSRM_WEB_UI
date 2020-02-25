@@ -31,7 +31,7 @@ export class UserProleComponent implements OnInit {
       isChecked: true
     },
     {
-      name: '用户真实姓名',
+      name: '真实姓名',
       key: null,
       value: 'realname',
       isChecked: true

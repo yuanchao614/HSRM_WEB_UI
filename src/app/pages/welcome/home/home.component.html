@@ -1,6 +1,6 @@
 
 <div nz-row id="mapcontainer">
-    <sj-marquee-board></sj-marquee-board>
+    <app-marquee-board></app-marquee-board>
   <div nz-row style="margin-left: 15px;">
     <!-- <div nz-col nzSpan="6">
       <nz-card nzHoverable="true" style="width: 300px;margin-top: 16px;background-color: #4A90E2;" [nzLoading]="loading">
@@ -63,13 +63,13 @@
     </div>
   </div>
   <div nz-row style="margin-top: 20px;">
-      <!-- <div nz-col nzSpan="11">
+      <div nz-col nzSpan="11">
         <div class="dataTable">
           <div class="title">售票统计分析</div>
-         <div echarts [options]="chartOption" class="demo-chart"></div>
+         <div echarts [options]="ticketOption" class="demo-chart"></div>
         </div>
       </div>
-      <div nz-col nzSpan="11" nzOffset="2">
+      <!-- <div nz-col nzSpan="11" nzOffset="2">
           <div class="dataTable">
               <div class="title">用户统计分析</div>
              <div echarts [options]="userChartOption" class="demo-chart"></div>

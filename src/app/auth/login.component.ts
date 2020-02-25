@@ -20,6 +20,9 @@ export class LoginComponent implements OnInit {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();
     }
+    if (this.validateForm.invalid) {
+      return;
+  }
     this.logIn();
   }
 

@@ -61,7 +61,7 @@
 }
 
 .board-wrapper h4 {
-	font-size: 18px;
+	font-size: 0.18rem;
 	font-family: Adobe Heiti Std;
 	font-weight: normal;
 	color: rgba(255, 255, 255, 1);
@@ -71,7 +71,7 @@
 
 .up-text {
 	color: white;
-	font-size: 18px;
+	font-size: 0.18rem;
 }
 
 .down-text {

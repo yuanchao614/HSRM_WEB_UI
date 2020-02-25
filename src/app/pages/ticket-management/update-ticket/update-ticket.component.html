@@ -1,1 +1,69 @@
-<p>update-ticket works!</p>
+
+<div class="deal-order">
+    <div class="body">
+        <div class="content">
+          <div class="row">
+              <div class="col">
+                <div class="col-title">
+                  <div class="title-name">高铁车票信息模块</div>
+                  <div class="title-operating">
+                    <div>
+                        <button nz-button class="headButton">所有成员</button>
+                    </div>
+                    <div>
+                        <button nz-button  class="headButton" (click)="addTicket()">新建</button>
+                    </div>
+                    <div>
+                        <button nz-button class="headButton" (click)="goEditView()">修改/查看</button>
+                    </div>
+                    <div>
+                        <button nz-button class="headButton" (click)="deleteTicketById()">删除</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-body">
+                  <nz-table id="nzTable" #basicTable [nzData]="listOfData" [nzShowPagination]="true">
+                    <thead>
+                      <tr class="tableHead">
+                        <!-- <th nzWidth="0.5rem"><i class="circle grey"></i></th> -->
+                        <th nzWidth="1rem" nzAlign="left" *ngFor="let item of renderHeader">
+                          
+                            {{item.name}}
+                         
+                        </th>
+                        <th
+                        nzWidth="62px"
+                        nzShowCheckbox
+                        *ngIf="checkbox"
+                        [(nzChecked)]="allChecked"
+                        [nzIndeterminate]="indeterminate"
+                        (nzCheckedChange)="checkAll($event)"
+                      ></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let data of basicTable.data; let i = index;">
+                          <td>{{ data.hs_railId }}</td>
+                          <td>{{ data.start_station }}</td>
+                          <td>{{ data.end_station }}</td>
+                          <td>{{ data.changeStartTime }}</td>
+                          <td>{{ data.changeEndTime }}</td>
+                          <td style="color: green;">{{ data.ticket_price1 }}</td>
+                          <td style="color: green;">{{ data.ticket_num1 }}</td>
+                          <td style="color: green;">{{ data.ticket_type1 }}</td>
+                          <td style="color: lightcoral;">{{ data.ticket_price2 }}</td>
+                          <td style="color: lightcoral;">{{ data.ticket_num2 }}</td>
+                          <td style="color: lightcoral;">{{ data.ticket_type2 }}</td>
+                          <td style="color: black;">{{ data.ticket_price3 }}</td>
+                          <td style="color: black;">{{ data.ticket_num3 }}</td>
+                          <td style="color: black;">{{ data.ticket_type3 }}</td>
+                        <td nzShowCheckbox *ngIf="checkbox" [(nzChecked)]="data.checked" (nzCheckedChange)="refreshStatus()"></td>
+                        </tr>
+                    </tbody>
+                  </nz-table>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>

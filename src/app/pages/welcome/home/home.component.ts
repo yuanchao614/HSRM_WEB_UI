@@ -22,15 +22,15 @@ export class HomeComponent implements OnInit {
   yLineKmValue = [];
   yLineMaxSpeed = [];
 
-  option = {
+  ticketOption = {
     title: {
-      text: '折线图堆叠'
+      text: ''
     },
     tooltip: {
       trigger: 'axis'
     },
     legend: {
-      data: ['邮件营销', '联盟广告', '视频广告', '直接访问', '搜索引擎']
+      data: ['一等票', '二等票', '站票']
     },
     grid: {
       left: '3%',
@@ -53,34 +53,22 @@ export class HomeComponent implements OnInit {
     },
     series: [
       {
-        name: '邮件营销',
+        name: '一等票',
         type: 'line',
         stack: '总量',
         data: [120, 132, 101, 134, 90, 230, 210]
       },
       {
-        name: '联盟广告',
+        name: '二等票',
         type: 'line',
         stack: '总量',
         data: [220, 182, 191, 234, 290, 330, 310]
       },
       {
-        name: '视频广告',
+        name: '站票',
         type: 'line',
         stack: '总量',
         data: [150, 232, 201, 154, 190, 330, 410]
-      },
-      {
-        name: '直接访问',
-        type: 'line',
-        stack: '总量',
-        data: [320, 332, 301, 334, 390, 330, 320]
-      },
-      {
-        name: '搜索引擎',
-        type: 'line',
-        stack: '总量',
-        data: [820, 932, 901, 934, 1290, 1330, 1320]
       }
     ]
   };
@@ -91,6 +79,7 @@ export class HomeComponent implements OnInit {
     setTimeout(() => {
       this.getLineChart();
       this.getUserChart();
+      this.getTicketsChart();
     }, 1000);
     // this.getLineChart();
   }
@@ -113,7 +102,7 @@ export class HomeComponent implements OnInit {
         this.yLineMaxSpeed.push(item.max_speed);
       });
     });
-    this.chartOption = this.option;
+    // this.chartOption = this.option;
   }
 
   getUserChart() {
@@ -150,7 +139,7 @@ export class HomeComponent implements OnInit {
         },
         xAxis: {
           type: 'category',
-          name: '系统用户',
+          // name: '系统用户',
           position: 'bottom',
           nameLocation: 'middle',
           nameTextStyle: {
@@ -182,7 +171,8 @@ export class HomeComponent implements OnInit {
                 position: 'top'
               }
             },
-            data: yUserValue
+            data: yUserValue,
+            smooth: true // 代表平滑曲线
           }
         ]
       };
@@ -269,12 +259,74 @@ export class HomeComponent implements OnInit {
     console.log(this.lineChartOption);
   }
 
-  initMap() {
-    const map = new AMap.Map('mapcontainer', {
-      mapStyle: 'amap://styles/e605a8b70ea77a69409e91d84883e866', // 设置地图的显示样式
-      zoom: 1
-  });
-    console.log(map);
+  getTicketsChart() {
+    this.homeService.getTickets().subscribe(r => {
+      console.log(r);
+      if (r.code === 5001) {
+        const resData = r.data.result;
+        const xData = [];
+        const yOneData = [];
+        const ySecData = [];
+        const yTheData = [];
+        resData.forEach(item => {
+          xData.push(item.hs_railId);
+          yOneData.push(item.ticket_num1);
+          ySecData.push(item.ticket_num2);
+          yTheData.push(item.ticket_num3);
+        });
+        this.ticketOption = {
+          title: {
+            text: ''
+          },
+          tooltip: {
+            trigger: 'axis'
+          },
+          legend: {
+            data: ['一等票', '二等票', '站票']
+          },
+          grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+          },
+          toolbox: {
+            feature: {
+              saveAsImage: {}
+            }
+          },
+          xAxis: {
+            type: 'category',
+            boundaryGap: true, // false代表从0刻度开始
+            // nameLocation: 'middle',
+            data: xData
+          },
+          yAxis: {
+            type: 'value'
+          },
+          series: [
+            {
+              name: '一等票',
+              type: 'bar',
+              stack: '总量',
+              data: yOneData
+            },
+            {
+              name: '二等票',
+              type: 'bar',
+              stack: '总量',
+              data: ySecData
+            },
+            {
+              name: '站票',
+              type: 'bar',
+              stack: '总量',
+              data: yTheData
+            }
+          ]
+        };
+      }
+    });
   }
 
 }

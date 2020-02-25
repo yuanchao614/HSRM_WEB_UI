@@ -36,7 +36,7 @@ export class LayoutsComponent implements OnInit {
           },
           {
             childRoute: '/emas/welcome/monitor',
-            name: 'monitor'
+            name: 'map'
           }
         ]
       },

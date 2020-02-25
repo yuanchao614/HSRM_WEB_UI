@@ -11,5 +11,43 @@
 </head>
 <body>
   <app-root></app-root>
+
+  <!-- 使用rem -->
+  <script>
+    (function (doc, win) {
+        const html = doc.documentElement,
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function () {
+                const clientWidth = html.clientWidth;
+                if (!clientWidth) return;
+
+                // 设计图为1920,情况下1rem = 100px; // 640以下全部不用再适配
+                // if (clientWidth >= 1920 || clientWidth <= 1024) {
+                if (clientWidth <= 1024) {
+                    html.style.fontSize = '100px';
+                } else {
+                    html.style.fontSize = 100 * (clientWidth / 1920) + 'px'
+                }
+
+            }
+
+        // debounce
+        const debounce = (fn, delay, context) => {
+            let _timer = null;
+
+            return (...args) => {
+                if (_timer) {
+                    clearTimeout(_timer);
+                    _timer = null;
+                }
+                _timer = setTimeout(() => fn.apply(context, args), delay);
+            }
+        }
+
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, debounce(recalc, 500, null), false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+</script>
 </body>
 </html>
