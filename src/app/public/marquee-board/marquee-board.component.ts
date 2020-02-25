@@ -4,7 +4,7 @@ import { PublicService } from '../../public/public-service';
 declare let AMap: any;
 
 @Component({
-  selector: 'sj-marquee-board',
+  selector: 'app-marquee-board',
   templateUrl: './marquee-board.component.html',
   styleUrls: ['./marquee-board.component.css'],
 })
@@ -84,6 +84,7 @@ export class MarqueeBoardComponent implements OnInit {
   ];
   autoPlay = true;
   locationCity: any;
+  province: string;
   // 左右滚动的位置数组
   marqueeContent = ['Jurong East', 'Jurong South', 'Jurong West', 'Jurong North'];
   newMarqueeContent = null;
@@ -167,6 +168,7 @@ export class MarqueeBoardComponent implements OnInit {
           // document.getElementById('info').innerHTML = '您当前所在城市：' + cityinfo;
           console.log(cityinfo);
           this.locationCity = cityinfo;
+          this.province = result.province;
           this.getWeather();
           // 地图显示当前城市
           map.setBounds(citybounds);

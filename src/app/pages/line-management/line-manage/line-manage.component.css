@@ -86,7 +86,7 @@ table thead {
 }
 
 .headButton {
-    width:120px;
+    width:1.2rem;
     height:32px;
     background:rgba(48,204,193,1);
     border-color: #30CCC1;

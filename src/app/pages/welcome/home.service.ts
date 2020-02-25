@@ -30,4 +30,9 @@ export class HomeService {
         const url = `/api/lineManagement/getLine`;
         return this.http.get<any>(`${url}`);
     }
+
+    getTickets(): Observable<any> {
+        const url = `/api/highSpeedTicketsManagement/queryAllTickets`;
+        return this.http.get<any>(`${url}`);
+    }
 }

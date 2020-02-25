@@ -35,13 +35,13 @@
 	<div class="board-container">
 		<div class="board-wrapper">
 			<!-- <i class="pic iconfont icon-weizhi"></i> -->
-			<i nz-icon nzType="global" nzTheme="outline" style="width: 8%;font-size: 26px;text-align: center;color: white;"></i>
+			<!-- <i nz-icon nzType="global" nzTheme="outline" style="width: 8%;font-size: 26px;text-align: center;color: white;"></i> -->
 			<div style="display: flex;flex-direction: column;">
 				<marquee scrollamount="5" scrolldelay="90" style="max-width: 100px;">
-					<div style="font-size: 20px;color: white;">{{newMarqueeContent}}</div>
+					<div style="font-size: 0.2rem;color: white;">{{newMarqueeContent}}</div>
 				</marquee>
 				<!-- <div style="font-size: 20px;">Jurong East</div> -->
-			<div style="font-size: 16px;color: white;">{{locationCity}}</div>
+			<div style="font-size: 0.16rem;color: white;">{{province}}-{{locationCity}}</div>
 			</div>
 		</div>
 		<!-- carousel -->
@@ -50,7 +50,7 @@
 		 (mouseover)='over()' (mouseout)="out()" style="cursor: default;" [nzEnableSwipe]='false'>
 			<div nz-carousel-content style="height: 79px;">
 				<div class="board-wrapper-content">
-					<div style="font-size: 28px;padding-top: 15px;color:white;">{{rollingBarData[0].majorData[0].line}}</div>
+					<div style="font-size: 0.28rem;padding-top: 0.45rem;color:white;">{{rollingBarData[0].majorData[0].line}}</div>
 					<div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
 						<p class="up-text">Line Management</p>
 						<p class="down-text" style="margin-left: 30px;color: #8BDC17;"><i nz-icon nzType="arrow-up"
@@ -58,7 +58,7 @@
 					</div>
 				</div>
 				<div class="board-wrapper-content">
-					<div style="font-size: 28px;padding-top: 15px;color:white;">{{rollingBarData[0].majorData[1].rail}}</div>
+					<div style="font-size: 0.28rem;padding-top: 0.45rem;color:white;">{{rollingBarData[0].majorData[1].rail}}</div>
 					<div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
 						<p class="up-text">Rail Management</p>
 						<p class="down-text" style="margin-left: 30px;color: #8BDC17;"><i nz-icon nzType="arrow-up"
@@ -66,7 +66,7 @@
 					</div>
 				</div>
 				<div class="board-wrapper-content">
-					<div style="font-size: 28px;padding-top: 15px;color:white;">{{rollingBarData[0].majorData[2].ticket}}</div>
+					<div style="font-size: 0.28rem;padding-top: 0.45rem;color:white;">{{rollingBarData[0].majorData[2].ticket}}</div>
 					<div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
 						<p class="up-text">Ticket Management</p>
 						<p class="down-text" style="margin-left: 30px;color: #8BDC17;"><i nz-icon nzType="arrow-up"
@@ -74,7 +74,7 @@
 					</div>
 				</div>
 				<div class="board-wrapper-content">
-					<div style="font-size: 28px;padding-top: 15px;color:white;">{{rollingBarData[0].majorData[3].user}}</div>
+					<div style="font-size: 0.28rem;padding-top: 0.45rem;color:white;">{{rollingBarData[0].majorData[3].user}}</div>
 					<div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
 						<p class="up-text">User ManageMent</p>
 						<p class="down-text" style="margin-left: 30px;color: #8BDC17;"><i nz-icon nzType="arrow-up"
@@ -84,7 +84,7 @@
 			</div>
 			<div nz-carousel-content style="height: 80px;">
 				<div class="board-wrapper-content">
-					<div style="font-size: 28px;padding-top: 15px;color:white;">{{rollingBarData[1].liftData[0].tempreture + '℃'}}</div>
+					<div style="font-size: 0.28rem;padding-top: 0.45rem;color:white;">{{rollingBarData[1].liftData[0].tempreture + '℃'}}</div>
 					<div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
 						<p class="up-text">Tempreture</p>
 						<p class="down-text" style="margin-left: 30px;color: red;"><i nz-icon nzType="arrow-down"
@@ -92,7 +92,7 @@
 					</div>
 				</div>
 				<div class="board-wrapper-content">
-					<div style="font-size: 28px;padding-top: 15px;color:white;">{{rollingBarData[1].liftData[1].weather}}</div>
+					<div style="font-size: 0.28rem;padding-top: 0.45rem;color:white;">{{rollingBarData[1].liftData[1].weather}}</div>
 					<div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
 						<p class="up-text">Weather</p>
 						<p class="down-text" style="margin-left: 30px;color: red;"><i nz-icon nzType="arrow-down"
@@ -100,7 +100,7 @@
 					</div>
 				</div>
 				<div class="board-wrapper-content">
-					<div style="font-size: 28px;padding-top: 15px;color:white;">{{rollingBarData[1].liftData[2].humidity + '%RH'}}</div>
+					<div style="font-size: 0.28rem;padding-top: 0.45rem;color:white;">{{rollingBarData[1].liftData[2].humidity + '%RH'}}</div>
 					<div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
 						<p class="up-text">Humidity</p>
 						<p class="down-text" style="margin-left: 30px;color: red;"><i nz-icon nzType="arrow-down"
@@ -108,7 +108,7 @@
 					</div>
 				</div>
 				<div class="board-wrapper-content">
-					<div style="font-size: 28px;padding-top: 15px;color:white;">{{rollingBarData[1].liftData[3].windPower}}</div>
+					<div style="font-size: 0.28rem;padding-top: 0.45rem;color:white;">{{rollingBarData[1].liftData[3].windPower}}</div>
 					<div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
 						<p class="up-text">windPower</p>
 						<p class="down-text" style="margin-left: 30px;color: red;"><i nz-icon nzType="arrow-down"
