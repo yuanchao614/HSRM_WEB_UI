@@ -18,60 +18,12 @@ export class HomeComponent implements OnInit {
   chartOption: any;
   lineChartOption: any;
   userChartOption: any;
+  highSpeedRailChartOption: any;
   xLineValue = [];
   yLineKmValue = [];
   yLineMaxSpeed = [];
 
-  ticketOption = {
-    title: {
-      text: ''
-    },
-    tooltip: {
-      trigger: 'axis'
-    },
-    legend: {
-      data: ['一等票', '二等票', '站票']
-    },
-    grid: {
-      left: '3%',
-      right: '4%',
-      bottom: '3%',
-      containLabel: true
-    },
-    toolbox: {
-      feature: {
-        saveAsImage: {}
-      }
-    },
-    xAxis: {
-      type: 'category',
-      boundaryGap: false,
-      data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
-    },
-    yAxis: {
-      type: 'value'
-    },
-    series: [
-      {
-        name: '一等票',
-        type: 'line',
-        stack: '总量',
-        data: [120, 132, 101, 134, 90, 230, 210]
-      },
-      {
-        name: '二等票',
-        type: 'line',
-        stack: '总量',
-        data: [220, 182, 191, 234, 290, 330, 310]
-      },
-      {
-        name: '站票',
-        type: 'line',
-        stack: '总量',
-        data: [150, 232, 201, 154, 190, 330, 410]
-      }
-    ]
-  };
+  ticketOption: any;
 
   ngOnInit() {
     this.getData();
@@ -80,6 +32,7 @@ export class HomeComponent implements OnInit {
       this.getLineChart();
       this.getUserChart();
       this.getTicketsChart();
+      this.getHighSpeedRail();
     }, 1000);
     // this.getLineChart();
   }
@@ -244,6 +197,18 @@ export class HomeComponent implements OnInit {
       ],
       series: [
         {
+          itemStyle: {
+            normal: {
+              label: {
+                show: true,		// 开启显示
+                position: 'top',	// 在上方显示
+                textStyle: {	    // 数值样式
+                  color: '#e5323e',
+                  fontSize: 16
+                }
+              }
+            }
+          },
           name: 'kilometer',
           type: 'bar',
           data: this.yLineKmValue
@@ -275,6 +240,7 @@ export class HomeComponent implements OnInit {
           yTheData.push(item.ticket_num3);
         });
         this.ticketOption = {
+          color: ['#2B76CC', '#e5323e', '#202020'],
           title: {
             text: ''
           },
@@ -295,32 +261,70 @@ export class HomeComponent implements OnInit {
               saveAsImage: {}
             }
           },
-          xAxis: {
+          // 为数组代表柱状图一格里显示多条，为对象一格展示一条多层
+          xAxis: [{
             type: 'category',
             boundaryGap: true, // false代表从0刻度开始
             // nameLocation: 'middle',
             data: xData
-          },
-          yAxis: {
+          }],
+          // 为数组代表柱状图一格里显示多条，为对象一格展示一条多层
+          yAxis: [{
             type: 'value'
-          },
+          }],
           series: [
             {
+              itemStyle: {
+                normal: {
+                  label: {
+                    show: true,		// 开启显示
+                    position: 'top',	// 在上方显示
+                    textStyle: {	    // 数值样式
+                      color: '#2B76CC',
+                      fontSize: 16
+                    }
+                  }
+                }
+              },
               name: '一等票',
               type: 'bar',
-              stack: '总量',
+              // stack: '总量',
               data: yOneData
             },
             {
+              itemStyle: {
+                normal: {
+                  label: {
+                    show: true,		// 开启显示
+                    position: 'top',	// 在上方显示
+                    textStyle: {	    // 数值样式
+                      color: '#e5323e',
+                      fontSize: 16
+                    }
+                  }
+                }
+              },
               name: '二等票',
               type: 'bar',
-              stack: '总量',
+              // stack: '总量',
               data: ySecData
             },
             {
+              itemStyle: {
+                normal: {
+                  label: {
+                    show: true,		// 开启显示
+                    position: 'top',	// 在上方显示
+                    textStyle: {	    // 数值样式
+                      color: '#202020',
+                      fontSize: 16
+                    }
+                  }
+                }
+              },
               name: '站票',
               type: 'bar',
-              stack: '总量',
+              // stack: '总量',
               data: yTheData
             }
           ]
@@ -329,4 +333,75 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  getHighSpeedRail() {
+    this.homeService.getHighSpeedRail().subscribe(r => {
+      const xData = [];
+      const yData1 = [];
+      const yData2 = [];
+      const yData3 = [];
+      console.log(r);
+      if (r.code === 3001) {
+      const resData = r.data.result;
+      resData.forEach(item => {
+        xData.push(item.hs_carnum);
+        yData1.push(item.site_num); // 座位数
+        yData2.push(item.max_speed); // max speed
+        yData3.push(item.hs_numCar); // 车厢
+      });
+      }
+      this.highSpeedRailChartOption = {
+        title: {
+          text: ''
+        },
+        tooltip: {
+          trigger: 'axis'
+        },
+        legend: {
+          data: ['座位数', '最高时速', '车厢数']
+        },
+        grid: {
+          left: '3%',
+          right: '4%',
+          bottom: '3%',
+          containLabel: true
+        },
+        toolbox: {
+          feature: {
+            saveAsImage: {}
+          }
+        },
+        xAxis: {
+          type: 'category',
+          // boundaryGap: false,
+          boundaryGap: true, // false代表从0刻度开始
+          data: xData
+        },
+        yAxis: {
+          type: 'value'
+        },
+        series: [
+          {
+            name: '座位数',
+            type: 'bar',
+            stack: '总量',
+            data: yData1
+          },
+          {
+            name: '最高时速',
+            type: 'bar',
+            stack: '总量',
+            data: yData2
+          },
+          {
+            name: '车厢数',
+            type: 'line',
+            stack: '总量',
+            data: yData3,
+            smooth: true // 代表平滑曲线
+
+          }
+        ]
+      };
+    });
+  }
 }

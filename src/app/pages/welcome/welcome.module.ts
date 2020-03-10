@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PublicComModule } from '../../public/public-com.module';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
 
 
 // import { WelcomeRoutingModule } from './welcome-routing.module';
@@ -33,7 +35,8 @@ const routes: Routes = [
 
 
 @NgModule({
-  imports: [ CommonModule, NgZorroAntdModule, PublicComModule, RouterModule.forChild(routes), NgxEchartsModule],
+  // tslint:disable-next-line: max-line-length
+  imports: [ CommonModule, NgZorroAntdModule, ReactiveFormsModule, FormsModule, PublicComModule, RouterModule.forChild(routes), NgxEchartsModule],
   declarations: [WelcomeComponent, HomeComponent, MonitorComponent],
 })
 export class WelcomeModule { }
