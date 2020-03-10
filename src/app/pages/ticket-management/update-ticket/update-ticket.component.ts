@@ -41,7 +41,7 @@ export class UpdateTicketComponent implements OnInit {
      isChecked: true
    },
    {
-     name: '预计到达时间',
+     name: '到达时间',
      key: null,
      value: 'endTime',
      isChecked: true

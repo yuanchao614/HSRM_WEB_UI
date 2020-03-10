@@ -43,12 +43,13 @@ export class LoginComponent implements OnInit {
 
   logIn() {
     const data = {
-      userName: this.validateForm.value.userName,
+      username: this.validateForm.value.userName,
       password: this.validateForm.value.password,
-      remember: this.validateForm.value.remember
+      // remember: this.validateForm.value.remember
     };
 
-    const param = '?name=' + data.userName + '&password=' + data.password;
+    // const param = '?name=' + data.userName + '&password=' + data.password;
+    const param = data;
     this.loginService.logIn(param).subscribe((r) => {
       console.log(r);
       const res: any = r;

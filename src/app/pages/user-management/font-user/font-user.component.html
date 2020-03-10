@@ -1,0 +1,37 @@
+      
+<div class="deal-order">
+    <div class="body">
+        <div class="content">
+          <div class="row">
+              <div class="col">
+                <div class="col-title">
+                  <div class="title-name">前台用户</div>
+                  <div class="title-operating">
+                  </div>
+                </div>
+                <div class="col-body">
+                  <nz-table id="nzTable" #basicTable [nzData]="listOfData" [nzShowPagination]="true">
+                    <thead>
+                      <tr class="tableHead">
+                        <!-- <th nzWidth="0.5rem"><i class="circle grey"></i></th> -->
+                        <th nzWidth="1rem" nzAlign="left" *ngFor="let item of renderHeader">
+                            {{item.name}}
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let data of basicTable.data; let i = index;">
+                          <td>{{ data.phoneNum }}</td>
+                          <td>{{ data.name }}</td>
+                          <td>{{ data.idCard }}</td>
+                          <td>{{ data.sex }}</td>
+                          <td>{{ data.password }}</td>
+                        </tr>
+                    </tbody>
+                  </nz-table>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>

@@ -69,4 +69,9 @@ export class UserService {
         const url = `/api/user/uploadImg`;
         return this.http.post<any>(`${url}`, param);
     }
+
+    getAllFontUser(): Observable<any>  {
+        const url = `/api/fontUser/allFontUser`;
+        return this.http.get<any>(`${url}`);
+    }
 }

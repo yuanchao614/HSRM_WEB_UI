@@ -35,4 +35,9 @@ export class HomeService {
         const url = `/api/highSpeedTicketsManagement/queryAllTickets`;
         return this.http.get<any>(`${url}`);
     }
+
+    getHighSpeedRail(): Observable<any> {
+        const url = `/api/highSpeedRailManagement/getHighSpeedRail`;
+        return this.http.get<any>(`${url}`);
+    }
 }

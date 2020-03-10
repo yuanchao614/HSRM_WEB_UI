@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { wsSend } from '../public/until/webServe';
 import { from } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Observable, of, Subject } from 'rxjs';
+
 
 @Injectable({
 	providedIn: 'root'
@@ -54,8 +56,14 @@ export class LoginService {
 		localStorage.removeItem('token');
 	}
 
-	logIn(data) {
-		return wsSend('login', data);
+	// logIn(data) {
+	// 	return wsSend('login', data);
+	// }
+
+
+	logIn(param): Observable<any> {
+		const url = `/api/user/login`;
+		return this.http.post<any>(`${url}`, param);
 	}
 
 }

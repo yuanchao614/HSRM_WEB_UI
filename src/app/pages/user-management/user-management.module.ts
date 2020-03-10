@@ -9,6 +9,7 @@ import { AddUserComponent } from './user-prole/add-user/add-user.component';
 import { UploadAvctorComponent } from './user-prole/upload-avctor/upload-avctor.component';
 import { UpdatePasswordComponent } from './user-prole/update-password/update-password.component';
 import { OperatorRecordComponent } from './operator-record/operator-record.component';
+import { FontUserComponent } from './font-user/font-user.component';
 
 
 
@@ -18,7 +19,8 @@ const COMPONENT = [
     AddUserComponent,
     UploadAvctorComponent,
     UpdatePasswordComponent,
-    OperatorRecordComponent
+    OperatorRecordComponent,
+    FontUserComponent
 ];
 
 const routes: Routes = [
@@ -27,6 +29,7 @@ const routes: Routes = [
     component: UserManagementComponent,
     children: [
       {path: 'user-prole', component: UserProleComponent},
+      {path: 'font-user', component: FontUserComponent},
       {path: 'operator', component: OperatorRecordComponent}
     //   {path: 'monitor', component: MonitorComponent}
     ]

@@ -25,86 +25,90 @@ export class LayoutsComponent implements OnInit {
     this.menuList = [
       {
         id: this.isGuid(8),
-        title: 'Home Page',
+        title: 'dashboard',
         icon: 'dashboard',
         active: true,
         isOpen: true,
         route: [
           {
             childRoute: '/emas/welcome/home',
-            name: 'Home Page'
+            name: '首页'
           },
           {
             childRoute: '/emas/welcome/monitor',
-            name: 'map'
+            name: '地图'
           }
         ]
       },
       {
         id: this.isGuid(8),
-        title: 'Line Management',
+        title: '高铁线路信息管理',
         icon: 'form',
         active: false,
         isOpen: false,
         route: [
           {
             childRoute: '/emas/line-management/line-manage',
-            name: 'High-Speed line'
+            name: '高铁线路信息列表'
           },
           {
             childRoute: '/emas/line-management/add-line',
-            name: 'Add New Line'
+            name: '新增线路'
           }
         ]
       },
       {
         id: this.isGuid(8),
-        title: 'Rail Management',
+        title: '高铁列车信息管理',
         icon: 'dashboard',
         active: false,
         isOpen: false,
         route: [
           {
             childRoute: '/emas/high-speed-management/high-speed-manage',
-            name: 'High-Speed Rail'
+            name: '高铁列车信息'
           },
           {
             childRoute: '/emas/high-speed-management/add-high-speed',
-            name: 'Add High-Speed Rail'
+            name: '新增列车'
           }
         ]
       },
       {
         id: this.isGuid(8),
-        title: 'ticket Management',
+        title: '高铁车票信息管理',
         icon: 'transaction',
         active: false,
         isOpen: false,
         route: [
           {
             childRoute: '/emas/ticket-management/update-ticket',
-            name: 'High-Speed Ticket'
+            name: '车票信息'
           },
           {
             childRoute: '/emas/ticket-management/add-ticket',
-            name: 'Add Ticket'
+            name: '新增车票'
           }
         ]
       },
       {
         id: this.isGuid(8),
-        title: 'User Management',
+        title: '用户信息管理',
         icon: 'user',
         active: false,
         isOpen: false,
         route: [
           {
             childRoute: '/emas/user-management/user-prole',
-            name: 'User Prole'
+            name: '后台用户信息'
+          },
+          {
+            childRoute: '/emas/user-management/font-user',
+            name: '前台用户信息'
           },
           {
             childRoute: '/emas/user-management/operator',
-            name: 'Operator Log'
+            name: '操作日志'
           }
         ]
       }

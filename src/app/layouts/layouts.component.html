@@ -8,16 +8,16 @@
       </a>
     </div>
     <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-      <li nz-submenu [nzOpen]="item.isOpen" [nzTitle]="item.title" [nzIcon]="item.icon" *ngFor="let item of menuList;">
-        <ul>
-          <li nz-menu-item nzMatchRouter *ngFor="let data of item.route">
-            <a [routerLink]="data.childRoute">{{ data.name }}</a>
+      <ng-container *ngFor="let item of menuList;">
+          <!-- <i [ngClass]="item.icon" style="line-height: 20px;"></i> -->
+          <li nz-submenu [nzOpen]="item.isOpen" [nzIcon]="item.icon"  [nzTitle]="item.title">
+            <ul>
+              <li nz-menu-item nzMatchRouter *ngFor="let data of item.route">
+                <a [routerLink]="data.childRoute">{{ data.name }}</a>
+              </li>
+            </ul>
           </li>
-          <!-- <li nz-menu-item nzMatchRouter>
-                  <a routerLink="/emas/welcome/monitor">monitor</a>
-                </li> -->
-        </ul>
-      </li>
+      </ng-container>
       <!-- <li nz-submenu nzClose nzTitle="Line Management" nzIcon="form">
               <ul>
                 <li nz-menu-item nzMatchRouter>
