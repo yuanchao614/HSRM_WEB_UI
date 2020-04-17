@@ -50,7 +50,7 @@
 		 (mouseover)='over()' (mouseout)="out()" style="cursor: default;" [nzEnableSwipe]='false'>
 			<div nz-carousel-content style="height: 79px;">
 				<div class="board-wrapper-content">
-					<div style="font-size: 0.28rem;padding-top: 0.30rem;color:white;">{{rollingBarData[0].majorData[0].line}}</div>
+					<div style="font-size: 0.28rem;padding-top: 0.30rem;color:white;">{{rollingBarData[0].majorData[0].line + '条'}}</div>
 					<div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
 						<p class="up-text">高铁线路总数</p>
 						<p class="down-text" style="margin-left: 30px;color: #8BDC17;"><i nz-icon nzType="arrow-up"
@@ -58,23 +58,23 @@
 					</div>
 				</div>
 				<div class="board-wrapper-content">
-					<div style="font-size: 0.28rem;padding-top: 0.30rem;color:white;">{{rollingBarData[0].majorData[1].rail}}</div>
+					<div style="font-size: 0.28rem;padding-top: 0.30rem;color:white;">{{rollingBarData[0].majorData[1].rail + '辆'}}</div>
 					<div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
-						<p class="up-text">高铁线路总数</p>
+						<p class="up-text">高铁列车总数</p>
 						<p class="down-text" style="margin-left: 30px;color: #8BDC17;"><i nz-icon nzType="arrow-up"
 								nzTheme="outline"></i>10%</p>
 					</div>
 				</div>
 				<div class="board-wrapper-content">
-					<div style="font-size: 0.28rem;padding-top: 0.30rem;color:white;">{{rollingBarData[0].majorData[2].ticket}}</div>
+					<div style="font-size: 0.28rem;padding-top: 0.30rem;color:white;">{{rollingBarData[0].majorData[2].ticket  + '张'}}</div>
 					<div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
-						<p class="up-text">车票总数</p>
+						<p class="up-text">高铁车票总数</p>
 						<p class="down-text" style="margin-left: 30px;color: #8BDC17;"><i nz-icon nzType="arrow-up"
 								nzTheme="outline"></i>9%</p>
 					</div>
 				</div>
 				<div class="board-wrapper-content">
-					<div style="font-size: 0.28rem;padding-top: 0.30rem;color:white;">{{rollingBarData[0].majorData[3].user}}</div>
+					<div style="font-size: 0.28rem;padding-top: 0.30rem;color:white;">{{rollingBarData[0].majorData[3].user  + '位'}}</div>
 					<div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
 						<p class="up-text">系统用户总数</p>
 						<p class="down-text" style="margin-left: 30px;color: #8BDC17;"><i nz-icon nzType="arrow-up"
