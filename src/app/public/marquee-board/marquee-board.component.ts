@@ -69,7 +69,7 @@ export class MarqueeBoardComponent implements OnInit {
       majorData: [
         { line: '28℃', id: 1 },
         { rail: '14%', id: 2 },
-        { ticket: '20%', id: 3 },
+        { ticket: '120', id: 3 },
         { user: '36%', id: 4 },
       ]
     },
