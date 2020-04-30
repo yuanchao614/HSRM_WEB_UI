@@ -29,21 +29,21 @@ export class TicketManagementService {
         return this.http.get<any>(`${url}`);
     }
 
-    // 根据线路编号删除
+    // 根据车票编号删除
     deleteTicketById(param): Observable<any> {
         const url = `/api/highSpeedTicketsManagement/deleteTicket`;
         return this.http.get<any>(`${url}/?id=${param.id}`);
     }
 
-    // 新增高铁线路信息
+    // 新增高铁车票信息
     addTicket(param): Observable<any> {
         const url = `/api/highSpeedTicketsManagement/addTicket`;
         return this.http.post<any>(`${url}`, param);
     }
 
-     // 新增高铁线路信息
-     updateLine(param): Observable<any> {
-        const url = `/api/lineManagement/updateLine`;
+     // 修改高铁车票信息
+     updateTicket(param): Observable<any> {
+        const url = `/api/highSpeedTicketsManagement/updateTicket`;
         return this.http.post<any>(`${url}`, param);
     }
 

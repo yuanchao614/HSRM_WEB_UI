@@ -174,8 +174,8 @@ export class UpdateTicketComponent implements OnInit {
      //   type: CUSTOMER_MANAGEMENT.MODIFY_VIEW,
      //   data: clickTr[0]
      // });
-     localStorage.setItem('EDIT_VIEW_LINE', JSON.stringify(clickTr[0]));
-     this.router.navigate(['/emas/line-management/edit-line']);
+     localStorage.setItem('EDIT_VIEW_TICKET', JSON.stringify(clickTr[0]));
+     this.router.navigate(['/emas/ticket-management/edit-ticket']);
    } else {
      this.message.create('warning', `请选择一条数据！`);
    }
