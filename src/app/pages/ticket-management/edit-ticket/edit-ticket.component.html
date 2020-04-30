@@ -1,0 +1,131 @@
+<div class="body">
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+      <div class="content">
+        <div class="row">
+          <div class="col">
+            <div class="col-title">
+              <div class="title-name">修改车票</div>
+              <div class="title-operating">
+                <div>
+                  <button nz-button class="headButton" (click)="editTicket()">保存</button>
+                </div>
+                <div>
+                  <button nz-button class="headButton" style="margin-left: 20px;" (click)="back()">返回</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-body">
+              <div nz-row>
+                <nz-form-item>
+                  <nz-form-label [nzSpan]="2">列车编号</nz-form-label>
+                  <nz-form-control [nzSpan]="6">
+                    <nz-select formControlName="carNum" nzAllowClear nzPlaceHolder="列车编号" style="width: 195px;">
+                      <nz-option nzValue="D6550" nzLabel="D6550"></nz-option>
+                      <nz-option nzValue="lucy" nzLabel="Lucy"></nz-option>
+                    </nz-select>
+                    <!-- <input nz-input placeholder="列车编号" formControlName="carNum" style="width: 195px;"/> -->
+                  </nz-form-control>
+                  <nz-form-label [nzSpan]="2">出发时间</nz-form-label>
+                  <nz-form-control [nzSpan]="6">
+                    <nz-date-picker nzShowTime nzFormat="yyyy-MM-dd HH:mm:ss" nzPlaceHolder="Select Time"
+                      formControlName="startTime" (ngModelChange)="onChange($event)" (nzOnOk)="onOk($event)">
+                    </nz-date-picker>
+                  </nz-form-control>
+                  <nz-form-label [nzSpan]="2">预计到达时间</nz-form-label>
+                  <nz-form-control [nzSpan]="6">
+                    <nz-date-picker nzShowTime nzFormat="yyyy-MM-dd HH:mm:ss" nzPlaceHolder="Select Time"
+                      formControlName="endTime" (ngModelChange)="onChange($event)" (nzOnOk)="onOk($event)">
+                    </nz-date-picker>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-row>
+                <nz-form-item>
+                  <nz-form-label [nzSpan]="2">出发站</nz-form-label>
+                  <nz-form-control [nzSpan]="6">
+                    <input nz-input placeholder="出发站" formControlName="startStation" style="width: 195px;" />
+                  </nz-form-control>
+                  <nz-form-label [nzSpan]="2">终点站</nz-form-label>
+                  <nz-form-control [nzSpan]="6">
+                    <input nz-input placeholder="终点站" formControlName="endStation" style="width: 195px;" />
+                  </nz-form-control>
+                  <nz-form-label [nzSpan]="2">支持退票</nz-form-label>
+                  <nz-form-control [nzSpan]="6">
+                    <nz-select formControlName="refund" nzAllowClear nzPlaceHolder="支持退票" style="width: 195px;">
+                      <nz-option nzValue="是" nzLabel="是"></nz-option>
+                      <nz-option nzValue="否" nzLabel="否"></nz-option>
+                    </nz-select>
+                    <!-- <input nz-input placeholder="票价" formControlName="refund" style="width: 195px;" /> -->
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-row>
+                <nz-form-item>
+                  <nz-form-label [nzSpan]="2">车票类型</nz-form-label>
+                  <nz-form-control [nzSpan]="6">
+                    <nz-select formControlName="ticketType1" nzAllowClear nzPlaceHolder="车票类型" style="width: 195px;">
+                      <nz-option nzValue="一等座" nzLabel="一等座"></nz-option>
+                      <nz-option nzValue="二等座" nzLabel="二等座"></nz-option>
+                      <nz-option nzValue="站票" nzLabel="站票"></nz-option>
+                    </nz-select>
+                    <!-- <input nz-input placeholder="车票类型" formControlName="ticketType1" style="width: 195px;" /> -->
+                  </nz-form-control>
+                  <nz-form-label [nzSpan]="2">一等票票价</nz-form-label>
+                  <nz-form-control [nzSpan]="6">
+                    <input nz-input placeholder="票价" formControlName="price1" style="width: 195px;" />
+                  </nz-form-control>
+                  <nz-form-label [nzSpan]="2">余票</nz-form-label>
+                  <nz-form-control [nzSpan]="6">
+                    <input nz-input placeholder="余票" formControlName="ticketNum1" style="width: 195px;" />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-row>
+                <nz-form-item>
+                  <nz-form-label [nzSpan]="2">车票类型</nz-form-label>
+                  <nz-form-control [nzSpan]="6">
+                    <nz-select formControlName="ticketType2" nzAllowClear nzPlaceHolder="车票类型" style="width: 195px;">
+                      <nz-option nzValue="一等座" nzLabel="一等座"></nz-option>
+                      <nz-option nzValue="二等座" nzLabel="二等座"></nz-option>
+                      <nz-option nzValue="站票" nzLabel="站票"></nz-option>
+                    </nz-select>
+                    <!-- <input nz-input placeholder="车票类型" formControlName="ticketType2" style="width: 195px;" /> -->
+                  </nz-form-control>
+                  <nz-form-label [nzSpan]="2">二等票票价</nz-form-label>
+                  <nz-form-control [nzSpan]="6">
+                    <input nz-input placeholder="票价" formControlName="price2" style="width: 195px;" />
+                  </nz-form-control>
+                  <nz-form-label [nzSpan]="2">余票</nz-form-label>
+                  <nz-form-control [nzSpan]="6">
+                    <input nz-input placeholder="余票" formControlName="ticketNum2" style="width: 195px;" />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-row>
+                <nz-form-item>
+                  <nz-form-label [nzSpan]="2">车票类型</nz-form-label>
+                  <nz-form-control [nzSpan]="6">
+                    <nz-select formControlName="ticketType3" nzAllowClear nzPlaceHolder="车票类型" style="width: 195px;">
+                      <nz-option nzValue="一等座" nzLabel="一等座"></nz-option>
+                      <nz-option nzValue="二等座" nzLabel="二等座"></nz-option>
+                      <nz-option nzValue="站票" nzLabel="站票"></nz-option>
+                    </nz-select>
+                    <!-- <input nz-input placeholder="车票类型" formControlName="ticketType3" style="width: 195px;" /> -->
+                  </nz-form-control>
+                  <nz-form-label [nzSpan]="2">站票票价</nz-form-label>
+                  <nz-form-control [nzSpan]="6">
+                    <input nz-input placeholder="票价" formControlName="price3" style="width: 195px;" />
+                  </nz-form-control>
+                  <nz-form-label [nzSpan]="2">余票</nz-form-label>
+                  <nz-form-control [nzSpan]="6">
+                    <input nz-input placeholder="余票" formControlName="ticketNum3" style="width: 195px;" />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  
