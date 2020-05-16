@@ -51,8 +51,8 @@
     align-items: center;
     height: 25px;
     width: 100px;
-    border-left: 5px solid #30CCC1;
-    border-right: 5px solid #30CCC1;
+    border-left: 5px solid #1890ff;
+    border-right: 5px solid #1890ff;
     border-radius: 3px;
     font-size: 16px;
     font-weight: bold;
@@ -95,8 +95,8 @@ table thead {
 .headButton {
     width:120px;
     height:32px;
-    background:rgba(48,204,193,1);
-    border-color: #30CCC1;
+    background:#1890ff;
+    border-color: #1890ff;
     border-radius:6px;
     color: white;
 }
@@ -105,14 +105,14 @@ table thead {
 checkbox勾选框背景颜色
 */
 ::ng-deep .ant-checkbox-checked .ant-checkbox-inner {
-    background: #66CB39;
-    border-color: #66CB39;
+    background: #1890ff;
+    border-color: #1890ff;
 }
 
 ::ng-deep .ant-checkbox-indeterminate .ant-checkbox-inner::after {
-    background-color: #66CB39;
+    background-color: #1890ff;
 }
 
 ::ng-deep .ant-checkbox-wrapper:hover .ant-checkbox-inner, .ant-checkbox:hover .ant-checkbox-inner {
-    border-color: #66CB39;
+    border-color: #1890ff;
 }

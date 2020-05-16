@@ -64,6 +64,7 @@ export class AddHighSpeedComponent implements OnInit {
       console.log(r);
       if (r.code === 3002) {
         this.message.create('success', `${r.msg}`);
+        this.back();
       } else if (r.code === -1) {
         this.message.create('warning', `${r.msg}`);
       }

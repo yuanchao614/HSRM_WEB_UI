@@ -21,7 +21,7 @@ const routes: Routes = [
     ]
   },
   { path: 'login', component: LoginComponent },
-  { path: '**', redirectTo: 'emas/welcome', pathMatch: 'full' }
+  { path: '**', redirectTo: 'emas/welcome/monitor', pathMatch: 'full' }
 ];
 
 @NgModule({

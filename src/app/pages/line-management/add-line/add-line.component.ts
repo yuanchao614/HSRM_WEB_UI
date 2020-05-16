@@ -63,6 +63,9 @@ export class AddLineComponent implements OnInit {
     console.log(r);
     if (r.code === 2003) {
       this.message.create('success', `${r.msg}`);
+      this.back();
+    } else {
+      this.message.create('warning', `${r.msg}`);
     }
   });
   }

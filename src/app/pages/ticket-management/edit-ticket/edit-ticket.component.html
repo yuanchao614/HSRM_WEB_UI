@@ -20,8 +20,7 @@
                   <nz-form-label [nzSpan]="2">列车编号</nz-form-label>
                   <nz-form-control [nzSpan]="6">
                     <nz-select formControlName="carNum" nzAllowClear nzPlaceHolder="列车编号" style="width: 195px;">
-                      <nz-option nzValue="D6550" nzLabel="D6550"></nz-option>
-                      <nz-option nzValue="lucy" nzLabel="Lucy"></nz-option>
+                      <nz-option [nzValue]="item.value" [nzLabel]="item.label" *ngFor="let item of listOption"></nz-option>
                     </nz-select>
                     <!-- <input nz-input placeholder="列车编号" formControlName="carNum" style="width: 195px;"/> -->
                   </nz-form-control>

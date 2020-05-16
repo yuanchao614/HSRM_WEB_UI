@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TicketManagementService } from '../ticket-management-service';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd';
+import { HighSpeedManagementService } from '../../high-speed-management/high-speed-management-service';
+
 
 @Component({
   selector: 'app-add-ticket',
@@ -12,17 +14,20 @@ import { NzMessageService } from 'ng-zorro-antd';
 export class AddTicketComponent implements OnInit {
 
   validateForm: FormGroup;
+  listOption = [];
 
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private message: NzMessageService,
-    private ticketManagementService: TicketManagementService
+    private ticketManagementService: TicketManagementService,
+    private highSpeedManagementService: HighSpeedManagementService
   ) { }
 
   ngOnInit() {
     this.initForm();
+    this.getData();
   }
 
   initForm() {
@@ -69,8 +74,24 @@ export class AddTicketComponent implements OnInit {
     console.log(r);
     if (r.code === 5002) {
       this.message.create('success', `${r.msg}`);
+    } else {
+      this.message.create('warnning', `${r.msg}`);
     }
   });
+  }
+
+  getData() {
+    this.highSpeedManagementService.getHighSpeedRail().subscribe((r) => {
+      console.log(r);
+      const res: any = r;
+      if (res.code === 3001) {
+        const resData = res.data.result;
+        resData.forEach(e => {
+          this.listOption.push({label: e.hs_carnum, value: e.hs_carnum});
+        });
+        this.message.create('success', `${r.msg}`);
+      }
+    });
   }
 
   submitForm(): void {

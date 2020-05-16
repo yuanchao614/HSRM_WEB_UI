@@ -6,12 +6,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UpdateTicketComponent } from './update-ticket/update-ticket.component';
 import { AddTicketComponent } from './add-ticket/add-ticket.component';
+import { EditTicketComponent} from './edit-ticket/edit-ticket.component'
 
 
 const COMPONENT = [
     TicketManagementComponent,
     UpdateTicketComponent,
-    AddTicketComponent
+    AddTicketComponent,
+    EditTicketComponent
 ];
 
 const routes: Routes = [
@@ -20,7 +22,8 @@ const routes: Routes = [
     component: TicketManagementComponent,
     children: [
       {path: 'update-ticket', component: UpdateTicketComponent},
-      {path: 'add-ticket', component: AddTicketComponent}
+      {path: 'add-ticket', component: AddTicketComponent},
+      {path: 'edit-ticket', component: EditTicketComponent}
     ]
 },
 ];

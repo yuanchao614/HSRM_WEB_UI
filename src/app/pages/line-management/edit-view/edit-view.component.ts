@@ -82,6 +82,7 @@ export class EditViewComponent implements OnInit, OnDestroy {
     console.log(r);
     if (r.code === 2004) {
       this.message.create('success', `${r.msg}`);
+      this.back();
     }
   });
   }
@@ -104,6 +105,6 @@ export class EditViewComponent implements OnInit, OnDestroy {
   }
 
   back() {
-    this.router.navigate(['/emas/line-management/update-line']);
+    this.router.navigate(['/emas/line-management/line-manage']);
   }
 }

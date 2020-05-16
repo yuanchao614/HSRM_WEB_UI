@@ -23,21 +23,21 @@ export class MarqueeBoardComponent implements OnInit {
         },
         {
           name: 'Tempreture',
-          number: '22%',
+          number: '22',
           status: 'high',
           statusNumber: '4.92%',
           icon: ''
         },
         {
           name: 'Weather',
-          number: '22%',
+          number: '阴',
           status: 'high',
           statusNumber: '4.92%',
           icon: ''
         },
         {
           name: 'Humidity',
-          number: '22%',
+          number: '22RH',
           status: 'high',
           statusNumber: '4.92%',
           icon: ''
@@ -62,31 +62,32 @@ export class MarqueeBoardComponent implements OnInit {
   notice = false;
   warning = true;
   location = 'Singapore';
-  userName = 'Y ACE';
+  userName = localStorage.getItem('username');
   role = 'Admin';
   rollingBarData: any[] = [
     {
       majorData: [
-        { line: '28℃', id: 1 },
-        { rail: '14%', id: 2 },
+        { line: '10', id: 1 },
+        { rail: '14', id: 2 },
         { ticket: '120', id: 3 },
-        { user: '36%', id: 4 },
+        { user: '36', id: 4 },
       ]
     },
     {
       liftData: [
-        { tempreture: '3.32%', id: 1 },
-        { weather: '15%', id: 2 },
-        { humidity: '20%', id: 3 },
-        { windPower: '15%', id: 4 },
+        { tempreture: '25', id: 1 },
+        { weather: '15', id: 2 },
+        { humidity: '20', id: 3 },
+        { windPower: '15', id: 4 },
       ],
     }
   ];
   autoPlay = true;
   locationCity: any;
   province: string;
+  nowDate = new Date();
   // 左右滚动的位置数组
-  marqueeContent = ['Jurong East', 'Jurong South', 'Jurong West', 'Jurong North'];
+  marqueeContent = ['欢迎', this.userName, '登录', '高铁信息管理系统', '当前时间', this.nowDate];
   newMarqueeContent = null;
   noticeContent = 'A car accident occured in Woodland 19# street, traffic police i';
 
@@ -97,6 +98,7 @@ export class MarqueeBoardComponent implements OnInit {
   ngOnInit() {
     this.getData();
     this.showCityInfo();
+    this.getWeather();
     // 将数组转为字符串
     const a = this.marqueeContent.toString();
     // 将空格替换为空格
@@ -128,6 +130,7 @@ export class MarqueeBoardComponent implements OnInit {
   }
 
   getData() {
+    this.userName = localStorage.getItem('username');
     this.publicService.getUser().subscribe(r => {
       console.log(r);
       if (r.code === 1001) {
@@ -159,8 +162,10 @@ export class MarqueeBoardComponent implements OnInit {
     });
     // 实例化城市查询类
     const citysearch = new AMap.CitySearch();
+    console.log(citysearch);
     // 自动获取用户IP，返回当前城市
     citysearch.getLocalCity((status, result) => {
+      console.log(status);
       if (status === 'complete' && result.info === 'OK') {
         if (result && result.city && result.bounds) {
           const cityinfo = result.city;
@@ -186,12 +191,14 @@ export class MarqueeBoardComponent implements OnInit {
       const weather = new AMap.Weather();
 
       // 执行实时天气信息查询
-      weather.getLive(this.locationCity, (err, data) => {
+      weather.getLive('成都', (err, data) => {
         console.log(data);
         this.rollingBarData[1].liftData[0].tempreture = data.temperature;
         this.rollingBarData[1].liftData[1].weather = data.weather;
         this.rollingBarData[1].liftData[2].humidity = data.humidity;
         this.rollingBarData[1].liftData[3].windPower = data.windPower;
+        this.province = data.province;
+        this.locationCity = data.city;
         console.log(this.rollingBarData[1].liftData);
       });
     });

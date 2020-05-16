@@ -88,6 +88,7 @@ export class UpdateHighSpeedComponent implements OnInit, OnDestroy {
       console.log(r);
       if (r.code === 3004) {
         this.message.create('success', `${r.msg}`);
+        this.back();
       } else if (r.code === -1) {
         this.message.create('warning', `${r.msg}`);
       }
